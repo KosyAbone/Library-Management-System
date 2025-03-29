@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashboardController">
+    <top>
+        <ToolBar style="-fx-background-color: #2c3e50;">
+            <Label text="Admin Dashboard" style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Generate Reports" onAction="#handleReports" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+            <Button text="Logout" onAction="#handleLogout" style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+        </ToolBar>
+    </top>
+    
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+            <Tab text="Dashboard">
+                <VBox spacing="20" style="-fx-padding: 20;">
+                    <HBox spacing="20" alignment="CENTER_LEFT">
+                        <Label text="Welcome, " style="-fx-font-size: 24;"/>
+                        <Label fx:id="welcomeLabel" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+                    </HBox>
+                    
+                    <TilePane hgap="20" vgap="20" prefColumns="3">
+                        <VBox style="-fx-background-color: #ecf0f1; -fx-padding: 15; -fx-background-radius: 5;">
+                            <Label text="Total Users" style="-fx-font-weight: bold;"/>
+                            <Label fx:id="totalUsersLabel" style="-fx-font-size: 24;"/>
+                        </VBox>
+                        <VBox style="-fx-background-color: #ecf0f1; -fx-padding: 15; -fx-background-radius: 5;">
+                            <Label text="Total Books" style="-fx-font-weight: bold;"/>
+                            <Label fx:id="totalBooksLabel" style="-fx-font-size: 24;"/>
+                        </VBox>
+                        <VBox style="-fx-background-color: #ecf0f1; -fx-padding: 15; -fx-background-radius: 5;">
+                            <Label text="Overdue Books" style="-fx-font-weight: bold;"/>
+                            <Label fx:id="overdueBooksLabel" style="-fx-font-size: 24;"/>
+                        </VBox>
+                    </TilePane>
+                    
+                    <Label text="Recent Activity" style="-fx-font-weight: bold;"/>
+                    <TableView fx:id="recentActivityTable" style="-fx-padding: 10;">
+                        <columns>
+                            <TableColumn text="Date" fx:id="dateColumn" prefWidth="150"/>
+                            <TableColumn text="Activity" fx:id="activityColumn" prefWidth="200"/>
+                            <TableColumn text="User" fx:id="userColumn" prefWidth="150"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+            
+            <Tab text="User Management">
+                <VBox spacing="10" style="-fx-padding: 15;">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <TextField fx:id="userSearchField" promptText="Search users..." prefWidth="300"/>
+                        <Button text="Search" onAction="#handleUserSearch"/>
+                        <Button text="Add User" onAction="#handleAddUser" style="-fx-background-color: #2ecc71; -fx-text-fill: white;"/>
+                        <Button text="Refresh" onAction="#handleUserRefresh"/>
+                    </HBox>
+                    
+                    <TableView fx:id="usersTable" style="-fx-padding: 4;">
+                        <columns>
+                            <TableColumn text="ID" fx:id="userIdColumn" prefWidth="50"/>
+                            <TableColumn text="Username" fx:id="usernameColumn" prefWidth="120"/>
+                            <TableColumn text="Full Name" fx:id="nameColumn" prefWidth="180"/>
+                            <TableColumn text="User Type" fx:id="userTypeColumn" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+            
+            <Tab text="Book Management">
+                <VBox spacing="10" style="-fx-padding: 15;">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <TextField fx:id="bookSearchField" promptText="Search books..." prefWidth="300"/>
+                        <Button text="Search" onAction="#handleBookSearch"/>
+                        <Button text="Add Book" onAction="#handleAddBook" style="-fx-background-color: #2ecc71; -fx-text-fill: white;"/>
+                        <Button text="Refresh" onAction="#handleBookRefresh"/>
+                    </HBox>
+                    
+                    <TableView fx:id="booksTable" style="-fx-padding: 5;">
+                        <columns>
+                            <TableColumn text="ID" fx:id="bookIdColumn" prefWidth="50"/>
+                            <TableColumn text="Book Title" fx:id="bookTitleColumn" prefWidth="200"/>
+                            <TableColumn text="Author" fx:id="bookAuthorColumn" prefWidth="150"/>
+                            <TableColumn text="Status" fx:id="bookStatusColumn" prefWidth="100"/>
+                            <TableColumn text="Actions" fx:id="bookActionsColumn" prefWidth="150"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+        </TabPane>
+    </center>
+    
+    <bottom>
+        <Label fx:id="statusLabel" style="-fx-padding: 5; -fx-background-color: #bdc3c7;"/>
+    </bottom>
+</BorderPane>
