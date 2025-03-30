@@ -1,4 +1,7 @@
-
+/**
+ *
+ * @author kossy
+ */
 package DAO;
 
 import Model.User;
@@ -6,9 +9,10 @@ import java.sql.*;
 import java.util.*;
 import Model.User;
 import util.DatabaseConnection;
+import util.PasswordUtils;
 
 public class UserDAO {
-    private Connection connection;
+    private final Connection connection;
     
     public UserDAO() {
         connection = DatabaseConnection.getConnection();
@@ -19,7 +23,11 @@ public class UserDAO {
         String sql = "INSERT INTO users (username, password, first_name, last_name, email, phone, " +
                      "user_type, member_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            setUserParameters(ps, user);
+            // Hash password before storing
+            String hashedPassword = PasswordUtils.hashPassword(user.getPassword());
+            user.setPassword(hashedPassword);
+
+            setUserParameters(ps, user);  
             return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
             handleSQLException(ex);
@@ -27,18 +35,58 @@ public class UserDAO {
         }
     }
 
-    public boolean updateUser(User user) {
+
+    public User updateUser(User user) {
+        if (user == null || user.getPassword() == null) {
+            return null;
+        }
+
         String sql = "UPDATE users SET username=?, password=?, first_name=?, last_name=?, email=?, " +
                      "phone=?, user_type=?, member_type=? WHERE user_id=?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            setUserParameters(ps, user);
-            ps.setInt(9, user.getUserId());
-            return ps.executeUpdate() > 0;
+            // Check if the password is already hashed
+            String passwordToStore = user.getPassword();
+            if (!PasswordUtils.isHashedPassword(passwordToStore)) {
+                passwordToStore = PasswordUtils.hashPassword(passwordToStore);  // Hash if plain text
+            }
+            user.setPassword(passwordToStore);  // Update the user object with hashed password
+
+            setUserParameters(ps, user);  // Set all other user fields
+            ps.setInt(9, user.getUserId());  // Set user ID
+
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0 ? user : null;
         } catch (SQLException ex) {
             handleSQLException(ex);
-            return false;
+            return null;
         }
     }
+
+    
+    public User updatePassword(int userId, String newPassword) {
+        if (newPassword == null) return null;
+
+        // Always hash the password before storing
+        String hashedPassword = PasswordUtils.hashPassword(newPassword);
+
+        String sql = "UPDATE users SET password = ? WHERE user_id = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, hashedPassword);
+            ps.setInt(2, userId);
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                
+                return getUserById(userId);
+            } else {
+                return null;  // Return null if the update failed
+            }
+        } catch (SQLException e) {
+            handleSQLException(e);
+            return null;
+        }
+    }
+
 
     public boolean deleteUser(int userId) {
         String sql = "DELETE FROM users WHERE user_id=?";
@@ -92,18 +140,56 @@ public class UserDAO {
     }
 
     public User login(String username, String password) {
-        String sql = "SELECT * FROM users WHERE username=? AND password=?";
+        String sql = "SELECT * FROM users WHERE username=?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, username);
-            ps.setString(2, password);
+
             try (ResultSet rs = ps.executeQuery()) {
-                return rs.next() ? extractUserFromResultSet(rs) : null;
+                if (rs.next()) {
+                    // Retrieve stored password (it could be either plain text or hashed)
+                    String storedPassword = rs.getString("password");
+
+                    // Check if the stored password is hashed or plain text
+                    if (PasswordUtils.isHashedPassword(storedPassword)) {
+                        // If the password is hashed, verify using PasswordUtils
+                        if (PasswordUtils.verifyPassword(password, storedPassword)) {
+                            return extractUserFromResultSet(rs);  // Return user if password matches
+                        } else {
+                            return null;  // Password does not match
+                        }
+                    } else {
+                        // If the stored password is plain text, verify and upgrade
+                        if (password.equals(storedPassword)) {
+                            // Upgrade the plain text password to a hashed one and update the DB
+                            String hashedPassword = PasswordUtils.hashPassword(password);
+                            updatePasswordInDatabase(rs.getInt("user_id"), hashedPassword);
+                            return extractUserFromResultSet(rs);  // Return user after updating password
+                        } else {
+                            return null;  // Password does not match
+                        }
+                    }
+                } else {
+                    return null;  // Username not found
+                }
             }
         } catch (SQLException ex) {
             handleSQLException(ex);
             return null;
         }
     }
+
+    
+    private void updatePasswordInDatabase(int userId, String hashedPassword) {
+        String sql = "UPDATE users SET password=? WHERE user_id=?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, hashedPassword);
+            ps.setInt(2, userId);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();  // Log exception or handle it appropriately
+        }
+    }
+
 
     // ========== LIST METHODS ==========
     public List<User> getAllUsers() {
@@ -167,10 +253,17 @@ public class UserDAO {
 
     // ========== PERMISSION METHODS ==========
     public boolean canCreateUserType(String currentUserType, String newUserType) {
-        if ("ADMIN".equals(currentUserType)) {
-            return true;
+        switch (currentUserType) {
+            case "ADMIN":
+                // Admin can create any type of account
+                return true;
+            case "LIBRARIAN":
+                // Librarians can only create MEMBER accounts
+                return "MEMBER".equals(newUserType);
+            default:
+                // Other users (including MEMBER) can't create accounts
+                return false;
         }
-        return "LIBRARIAN".equals(currentUserType) && "MEMBER".equals(newUserType);
     }
 
     // ========== HELPER METHODS ==========

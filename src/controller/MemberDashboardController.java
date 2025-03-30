@@ -93,22 +93,22 @@ public class MemberDashboardController {
     }
 
     @FXML
-    private void handleRequestBook() {
+    private void handleBorrowBook() {
         Book selectedBook = availableBooksTable.getSelectionModel().getSelectedItem();
-        if (selectedBook != null) {
-            boolean success = borrowRecordDAO.createBorrowRequest(
-                currentUser.getUserId(),
-                selectedBook.getBookId()
-            );
-            
-            if (success) {
-                statusLabel.setText("Book request submitted successfully");
-                loadDashboardData();
-            } else {
-                statusLabel.setText("Failed to submit book request");
-            }
-        } else {
-            statusLabel.setText("Please select a book to request");
+        if (selectedBook == null) {
+            statusLabel.setText("Please select a book first");
+            return;
+        }
+
+        String result = borrowRecordDAO.borrowBook(selectedBook.getBookId(), currentUser.getUserId());
+
+        // Extract user-friendly message
+        String userMessage = result.replaceFirst("^(Success|Error):\\s*", "");
+        statusLabel.setText(userMessage);
+
+        // Check success
+        if (result.startsWith("Success")) {
+            loadDashboardData();
         }
     }
 

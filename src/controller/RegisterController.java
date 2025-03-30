@@ -1,21 +1,22 @@
-/**
- *
- * @author kossy
- */
 package controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import Model.User;
 import DAO.UserDAO;
-import util.PasswordUtils;
-import java.io.IOException;
+import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.util.Duration;
 
 public class RegisterController {
     // FXML injected fields
@@ -29,11 +30,16 @@ public class RegisterController {
     @FXML private ComboBox<String> userTypeCombo;
     @FXML private ComboBox<String> memberTypeCombo;
     @FXML private Label errorLabel;
+    @FXML private Label successLabel;
+    @FXML private Text formTitleText;
+    @FXML private Button registerBtn;
     
     // DAO and state
-    private UserDAO userDAO = new UserDAO();
+    private final UserDAO userDAO = new UserDAO();
     private User currentUser;
-
+    private boolean isModal = false;
+    private boolean isEditing = false;
+    
     @FXML
     public void initialize() {
         
@@ -104,6 +110,10 @@ public class RegisterController {
     @FXML
     private void handleRegister() {
         try {
+            
+            errorLabel.setVisible(false);
+            successLabel.setVisible(false);
+            
             if (!validateInputs()) return;
             
             String userType = userTypeCombo.getValue();
@@ -116,7 +126,7 @@ public class RegisterController {
             }
             
             // Anonymous registration restrictions
-            if (currentUser == null && !"MEMBER".equals(userType)) {
+            else if ("MEMBER".equals(userType)) {
                 showError("Only member registration is allowed");
                 return;
             }
@@ -124,12 +134,21 @@ public class RegisterController {
             if (!validateUniqueCredentials()) return;
             
             if (createNewUser(userType, memberType)) {
-                showSuccess("Registration successful!" + 
-                           (currentUser == null ? " Please login." : ""));
-                handleCancel();
+                showSuccess("✅ Registration successful!");
+                
+                if(currentUser == null ) { //public registration. redirect to login
+                    showSuccess("✅ Registration successful! Redirecting to login...");
+                    PauseTransition delay = new PauseTransition(Duration.seconds(2));
+                    delay.setOnFinished(event -> handleCancel());
+                    delay.play();
+                }
+                else{
+                    // For admins, prepare for next registration
+                    clearForm();
+                    firstNameField.requestFocus();
+                }
             }
         } catch (Exception e) {
-            System.err.println("Error during registration: " + e.getMessage());
             e.printStackTrace();
             showError("An unexpected error occurred during registration");
         }
@@ -185,7 +204,7 @@ public class RegisterController {
             return true;
         } catch (Exception e) {
             System.err.println("Error checking credentials: " + e.getMessage());
-            showError("Error checking credentials availability");
+            showError("User exists. Please login.");
             return false;
         }
     }
@@ -198,7 +217,7 @@ public class RegisterController {
             newUser.setEmail(emailField.getText().trim());
             newUser.setPhone(phoneField.getText().trim());
             newUser.setUsername(usernameField.getText().trim());
-            newUser.setPassword(PasswordUtils.hashPassword(passwordField.getText()));
+            newUser.setPassword(passwordField.getText().trim());
             newUser.setUserType(userType);
             newUser.setMemberType(memberType);
             
@@ -208,29 +227,36 @@ public class RegisterController {
             }
             return success;
         } catch (Exception e) {
-            System.err.println("Error creating user: " + e.getMessage());
             e.printStackTrace();
             showError("Error creating user account");
             return false;
         }
     }
+   
+    public void setEditing(boolean editing) {
+        this.isEditing = editing;
+        Platform.runLater(() -> {
+            formTitleText.setText(isEditing ? "Edit User" : "Register New Account");
+            registerBtn.setText(isEditing ? "Confirm" : "Register");
+         });
+    }
 
     @FXML
     private void handleCancel() {
-        try {
-            String fxml = currentUser != null ? "/view/AdminDashboard.fxml" : "/view/Login.fxml";
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-            Parent root = loader.load();
-            
-            Stage stage = (Stage) usernameField.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            System.err.println("Error navigating back: " + e.getMessage());
-            e.printStackTrace();
-            showError("Error navigating back");
-        }
+        closeWindow();
     }
+    
+    private void showSuccess(String message) {
+        errorLabel.setVisible(false);
+        successLabel.setText(message);
+        successLabel.setVisible(true);
+        
+        // Auto-hide after 3 seconds
+        PauseTransition visiblePause = new PauseTransition(Duration.seconds(3));
+        visiblePause.setOnFinished(event -> successLabel.setVisible(false));
+        visiblePause.play();
+    }
+
     
     private void showError(String message) {
         errorLabel.setText(message);
@@ -238,9 +264,40 @@ public class RegisterController {
         errorLabel.setVisible(true);
     }
     
-    private void showSuccess(String message) {
-        errorLabel.setText(message);
-        errorLabel.setStyle("-fx-text-fill: green;");
-        errorLabel.setVisible(true);
+    private void showAnimatedSuccess() {
+        ImageView checkmark = new ImageView(new Image("/images/checkmark.gif") {});
+        checkmark.setFitHeight(50);
+        checkmark.setFitWidth(50);
+
+        StackPane pane = new StackPane(checkmark);
+        pane.setAlignment(Pos.CENTER);
+
+        Stage popup = new Stage();
+        popup.initModality(Modality.APPLICATION_MODAL);
+        popup.setScene(new Scene(pane, 100, 100));
+        popup.show();
+
+        PauseTransition delay = new PauseTransition(Duration.seconds(3));
+        delay.setOnFinished(event -> popup.close());
+        delay.play();
+    }
+    
+    private void clearForm(){
+        firstNameField.clear();
+        lastNameField.clear();
+        emailField.clear();
+        phoneField.clear();
+        usernameField.clear();
+        passwordField.clear();
+        confirmPasswordField.clear();
+    }
+    
+    
+    private void closeWindow() {
+        ((Stage) usernameField.getScene().getWindow()).close();
+    }
+    
+    public void setIsModal(boolean isModal) {
+        this.isModal = isModal;
     }
 }

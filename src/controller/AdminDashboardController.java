@@ -12,6 +12,10 @@ import Model.User;
 import util.SceneManager;
 import java.io.IOException;
 import java.util.List;
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
 
 public class AdminDashboardController {
     @FXML private Label welcomeLabel, totalUsersLabel, totalBooksLabel, overdueBooksLabel, statusLabel;
@@ -25,11 +29,11 @@ public class AdminDashboardController {
     
     // Table columns for user management
     @FXML private TableColumn<User, Integer> userIdColumn;
-    @FXML private TableColumn<User, String> usernameColumn, nameColumn, userTypeColumn;
+    @FXML private TableColumn<User, String> usernameColumn, nameColumn, userTypeColumn, userActionsColumn;
     
     // Table columns for book management
     @FXML private TableColumn<Book, Integer> bookIdColumn;
-    @FXML private TableColumn<Book, String> bookTitleColumn, bookAuthorColumn, bookStatusColumn;
+    @FXML private TableColumn<Book, String> bookTitleColumn, bookAuthorColumn, bookStatusColumn, bookActionsColumn;
     
     private User currentUser;
     private final UserDAO userDAO = new UserDAO();
@@ -54,12 +58,81 @@ public class AdminDashboardController {
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         userTypeColumn.setCellValueFactory(new PropertyValueFactory<>("userType"));
+        userActionsColumn.setCellFactory(param -> {
+            return new TableCell<User, String>() {
+                private final Button editUserButton = new Button("Edit");
+                private final Button deleteUserButton = new Button("Delete");
+                
+                {
+                    // Set the edit button action
+                    editUserButton.setOnAction(event -> handleEditUser(getTableRow().getItem()));
+                    
+                    // Set the delete button action
+                    deleteUserButton.setOnAction(event -> handleDeleteUser(getTableRow().getItem()));
+                }
+
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setGraphic(null);  // No buttons when the row is empty
+                    } else {
+                        // Create a horizontal layout for the buttons
+                        HBox hBox = new HBox(10, editUserButton, deleteUserButton);
+                        setGraphic(hBox);
+                    }
+                }
+
+                private void handleDeleteUser(User user) {
+                    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                }
+
+                private void handleEditUser(User user) {
+                    showUserRegForm(user);
+                }
+            };
+        });
         
         // Book Management Table
         bookIdColumn.setCellValueFactory(new PropertyValueFactory<>("bookId"));
         bookTitleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         bookAuthorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
         bookStatusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+        // Set up the Actions column with edit and delete buttons
+        bookActionsColumn.setCellFactory(param -> {
+            return new TableCell<Book, String>() {
+                private final Button editBookButton = new Button("Edit");
+                private final Button deleteBookButton = new Button("Delete");
+                
+                {
+                    // Set the edit button action
+                    editBookButton.setOnAction(event -> handleEditBook(getTableRow().getItem()));
+                    
+                    // Set the delete button action
+                    deleteBookButton.setOnAction(event -> handleDeleteBook(getTableRow().getItem()));
+                }
+
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setGraphic(null);  // No buttons when the row is empty
+                    } else {
+                        // Create a horizontal layout for the buttons
+                        HBox hBox = new HBox(10, editBookButton, deleteBookButton);
+                        setGraphic(hBox);
+                    }
+                }
+
+                private void handleDeleteBook(Book item) {
+                    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                }
+
+                private void handleEditBook(Book item) {
+                    showBookForm(item);
+                }
+            };
+        });
     }
 
     private void loadDashboardData() {
@@ -118,22 +191,12 @@ public class AdminDashboardController {
 
     @FXML
     private void handleAddUser() {
-        try {
-            RegisterController controller = SceneManager.loadAndSwitch("/view/Register.fxml");
-            controller.setCurrentUser(currentUser);
-        } catch (IOException e) {
-            showError("Failed to load registration form: " + e.getMessage());
-        }
+        showUserRegForm(null);
     }
 
     @FXML
     private void handleAddBook() {
-//        try {
-//            AddBookController controller = SceneManager.loadAndSwitch("/view/AddBook.fxml");
-//            controller.setCurrentUser(currentUser);
-//        } catch (IOException e) {
-//            showError("Failed to load add book form: " + e.getMessage());
-//        }
+        showBookForm(null);
     }
 
     @FXML
@@ -145,6 +208,48 @@ public class AdminDashboardController {
 //            showError("Failed to load reports: " + e.getMessage());
 //        }
     }
+    
+    private void showUserRegForm(User user) {
+        try {
+            SceneManager.loadModal(
+                "/view/Register.fxml",
+                user == null ? "Add New User" : "Edit User Information",
+                Modality.APPLICATION_MODAL,
+                (RegisterController controller) -> {
+                    controller.setCurrentUser(currentUser);
+                    controller.setEditing(user != null);
+                    if (user != null) {
+//                        controller.populateForm(user);
+                    }
+                }
+            );
+            handleUserRefresh();
+        } catch (IOException e) {
+            showError("Failed to load registration form: " + e.getMessage());
+        }
+    }   
+
+    private void showBookForm(Book book) {
+        try {
+            SceneManager.loadModal(
+                "/view/BookForm.fxml", 
+                book == null ? "Add New Book" : "Edit Book",
+                Modality.APPLICATION_MODAL,
+                (BookFormController controller) -> {
+                    controller.setBook(book);
+                }
+            );
+
+            // Refresh after the popup closes
+            handleBookRefresh();
+        } catch (IOException e) {
+            showError("Failed to load book form: " + e.getMessage());
+        }
+    }
+
+//    private void refreshBooks() {
+//        booksTable.setItems(FXCollections.observableArrayList(bookDAO.getAllBooks()));
+//    }
 
     @FXML
     private void handleLogout() {
@@ -154,6 +259,7 @@ public class AdminDashboardController {
             showError("Logout failed: " + e.getMessage());
         }
     }
+    
 
     private void showError(String message) {
         statusLabel.setText(message);

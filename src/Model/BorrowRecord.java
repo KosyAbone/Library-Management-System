@@ -7,6 +7,10 @@ package Model;
 import java.sql.Date;
 
 public class BorrowRecord {
+    public static final String BORROWED = "BORROWED";
+    public static final String RETURNED = "RETURNED";
+    public static final String OVERDUE = "OVERDUE";
+    
     private int borrowId;
     private int bookId;
     private int userId;
@@ -72,6 +76,11 @@ public class BorrowRecord {
         return status; 
     }
     public void setStatus(String status) { 
+        if (!status.equals(BORROWED) && 
+            !status.equals(RETURNED) && 
+            !status.equals(OVERDUE)) {
+            throw new IllegalArgumentException("Invalid status value");
+        }
         this.status = status; 
     }
     public String getBookTitle() { 

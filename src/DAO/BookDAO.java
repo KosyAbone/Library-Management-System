@@ -1,10 +1,5 @@
 package DAO;
 
-/**
- *
- * @author kossy
- */
-
 import java.sql.*;
 import java.util.*;
 import Model.Book;

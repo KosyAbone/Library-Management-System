@@ -6,6 +6,7 @@ import Model.User;
 import DAO.UserDAO;
 import util.SceneManager;
 import java.io.IOException;
+import javafx.stage.Modality;
 
 public class LoginController {
     @FXML private TextField usernameField;
@@ -66,8 +67,15 @@ public class LoginController {
     @FXML
     private void handleRegister() {
         try {
-            RegisterController controller = SceneManager.loadAndSwitch("/view/Register.fxml");
-            controller.setCurrentUser(null);
+            SceneManager.loadModal(
+                "/view/Register.fxml", 
+                "Register New Account",
+                Modality.APPLICATION_MODAL,
+                (RegisterController controller) -> {
+                    controller.setIsModal(false);
+                    controller.setCurrentUser(null);
+                }
+            );
         } catch (IOException e) {
             showError("Error loading registration form: " + e.getMessage());
         }
