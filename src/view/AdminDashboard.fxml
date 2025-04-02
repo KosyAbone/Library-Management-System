@@ -7,25 +7,26 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="905.0" prefWidth="1522.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashboardController">
-    
+<AnchorPane prefHeight="982.0" prefWidth="1727.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashboardController">
     <children>
+        <fx:include source="AdminGlobal.fxml" />
 
         <!-- Pie Chart Panel -->
-        <Pane fx:id="pieChartPane" layoutX="39.0" layoutY="36.0" prefHeight="631.0" prefWidth="631.0">
+        <Pane fx:id="pieChartPane" layoutX="275.0" layoutY="75.0" prefHeight="631.0" prefWidth="631.0">
             <children>
                 <PieChart fx:id="pieChart" layoutX="18.0" layoutY="15.0" prefHeight="600.0" prefWidth="600.0" />
             </children>
         </Pane>
-        <Pane layoutX="96.0" layoutY="703.0" prefHeight="148.0" prefWidth="515.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+        <Pane layoutX="327.0" layoutY="773.0" prefHeight="148.0" prefWidth="515.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
             <Circle fill="#3d3e3e" layoutX="75.0" layoutY="44.02" radius="12.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-            <Circle fill="#9ea3b2" layoutX="75.0" layoutY="107.02" radius="12.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-            <Label layoutX="150.0" layoutY="26.0" text="Total Borrowed Books ">
+            <Circle fill="#151619" layoutX="75.0" layoutY="107.02" radius="12.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label layoutX="150.0" layoutY="32.0" text="Total Borrowed Books ">
                <font>
                   <Font size="26.0" />
                </font>
@@ -39,7 +40,7 @@
       </Pane>
 
         <!-- Total User Count -->
-        <Pane layoutX="729.0" layoutY="51.0" prefHeight="121.0" prefWidth="368.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+        <Pane layoutX="986.0" layoutY="122.0" prefHeight="121.0" prefWidth="368.0" style="-fx-background-color: white; -fx-background-radius: 12;">
             <children>
                 <Pane layoutX="20.0" layoutY="17.0" prefHeight="88.0" prefWidth="80.0" style="-fx-background-color: #D7D7D7; -fx-background-radius: 12;">
                     <children>
@@ -59,7 +60,7 @@
         </Pane>
 
         <!-- Total Book Count -->
-        <Pane layoutX="729.0" layoutY="199.0" prefHeight="121.0" prefWidth="368.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+        <Pane layoutX="986.0" layoutY="270.0" prefHeight="121.0" prefWidth="368.0" style="-fx-background-color: white; -fx-background-radius: 12;">
             <children>
                 <Pane layoutX="20.0" layoutY="17.0" prefHeight="88.0" prefWidth="80.0" style="-fx-background-color: #D7D7D7; -fx-background-radius: 12;">
                     <children>
@@ -79,7 +80,7 @@
         </Pane>
 
         <!-- Librarian Count -->
-        <Pane layoutX="729.0" layoutY="347.0" prefHeight="121.0" prefWidth="368.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+        <Pane layoutX="986.0" layoutY="418.0" prefHeight="121.0" prefWidth="368.0" style="-fx-background-color: white; -fx-background-radius: 12;">
             <children>
                 <Pane layoutX="20.0" layoutY="17.0" prefHeight="88.0" prefWidth="80.0" style="-fx-background-color: #D7D7D7; -fx-background-radius: 12;">
                     <children>
@@ -99,7 +100,7 @@
         </Pane>
 
         <!-- Overdue Borrowers (TableView) -->
-        <Pane layoutX="1140.0" layoutY="51.0" prefHeight="419.0" prefWidth="344.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+        <Pane layoutX="1397.0" layoutY="122.0" prefHeight="419.0" prefWidth="344.0" style="-fx-background-color: white; -fx-background-radius: 12;">
             <children>
                 <Label layoutX="85.0" layoutY="24.0" text="Overdue Borrowers">
                     <font><Font size="22.0" /></font>
@@ -114,7 +115,7 @@
         </Pane>
         
         <!-- Librarians TableView Section -->
-        <Pane layoutX="1146.0" layoutY="504.0" prefHeight="363.0" prefWidth="339.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+        <Pane layoutX="1403.0" layoutY="575.0" prefHeight="363.0" prefWidth="339.0" style="-fx-background-color: white; -fx-background-radius: 12;">
             <children>
                 <Label layoutX="129.0" layoutY="19.0" text="Librarians">
                     <font>
@@ -128,15 +129,5 @@
                 </TableView>
             </children>
         </Pane>
-        <Pane fx:id="logoutPane" layoutX="10.0" layoutY="850.0" prefHeight="44.0" prefWidth="44.0" style="-fx-background-color: white; -fx-background-radius: 10;">
-           <children>
-               <ImageView fx:id="imglogout" fitHeight="24.0" fitWidth="24.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                   <image>
-                       <Image url="@../assets/logOutIconBlack.png" />
-                   </image>
-               </ImageView>
-           </children>
-       </Pane>
-       <Button blendMode="OVERLAY" layoutX="10.0" layoutY="850.0" onAction="#btnLogOutAction" prefHeight="44.0" prefWidth="44.0" style="-fx-background-radius: 10;" text=" " />
     </children>
-</Pane>
+</AnchorPane>

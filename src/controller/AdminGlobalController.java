@@ -1,83 +1,80 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import Model.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import util.Navigation;
 
-/**
- * FXML Controller class
- *
- * @author ohigbai
- */
-public class AdminGlobalController implements Initializable {
+public class AdminGlobalController {
+
+    @FXML private Pane pagingPane;
+    private User currentUser;
+
+    public void setUser(User user) {
+        this.currentUser = user;
+    }
 
     @FXML
-    private Pane catalogPane;
-    @FXML
-    private Label lblCatalog;
-    @FXML
-    private ImageView imgCatalog;
-    @FXML
-    private Pane dashboardPane;
-    @FXML
-    private Label lblDashboard;
-    @FXML
-    private ImageView imgDashboard;
-    @FXML
-    private Pane booksPane;
-    @FXML
-    private Label lblBooks;
-    @FXML
-    private ImageView imgBooks;
-    @FXML
-    private Pane usersPane;
-    @FXML
-    private Label lblUsers;
-    @FXML
-    private ImageView imgUsers;
-    @FXML
-    private Pane branchesPane;
-    @FXML
-    private Label lblBranches;
-    @FXML
-    private ImageView imgBranches;
-    @FXML
-    private Pane logOutPane;
-    @FXML
-    private Label lblLogOut;
-    @FXML
-    private ImageView imgLogOut;
-    @FXML
-    private Label lblAdmin;
-    @FXML
-    private Label lblTime;
-    @FXML
-    private Label lblDate;
-    @FXML
-    private Pane pagingPane;
-    @FXML
-    private ImageView imgTransparent;
-    @FXML
-    private Pane popUpPane;
-    @FXML
-    private Pane popUpLargePane;
-    @FXML
-    private Pane settingsPane;
+    private void btnDashboardOnAction(ActionEvent event) {
+        try {
+            Navigation.switchPaging(pagingPane, "AdminDashboard.fxml", (AdminDashboardController controller) -> {
+                controller.setUser(currentUser);
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+    @FXML
+    private void btnCatalogOnAction(ActionEvent event) {
+        try {
+            Navigation.switchPaging(pagingPane, "AdminBorrowed.fxml", (AdminBorrowedController controller) -> {
+                controller.setUser(currentUser);
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void btnBooksOnAction(ActionEvent event) {
+        try {
+            Navigation.switchPaging(pagingPane, "AdminBookManagement.fxml", (AdminBookManagementController controller) -> {
+                controller.setUser(currentUser);
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void btnUsersOnAction(ActionEvent event) {
+        try {
+            Navigation.switchPaging(pagingPane, "AdminUserManagement.fxml", (AdminUserManagementController controller) -> {
+                controller.setUser(currentUser);
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void btnBranchesOnAction(ActionEvent event) {
+        // TODO: Add support for branches page
+    }
+
+    @FXML
+    private void btnLogOutOnAction(ActionEvent event) {
+        try {
+            Navigation.switchNavigation("Login.fxml", event);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void btnSettingsOnAction(ActionEvent event) {
+        // Toggle visibility of settingsPane or open settings popup
+    }
 }
