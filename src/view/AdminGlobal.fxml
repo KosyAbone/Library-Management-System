@@ -12,7 +12,7 @@
 <AnchorPane prefHeight="981.0" prefWidth="1745.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminGlobalController">
    <children>
       <Button layoutX="-29.0" layoutY="-3.0" text=" " />
-      <Pane prefHeight="981.0" prefWidth="222.0" style="-fx-background-color: black;">
+      <Pane layoutY="-1.0" prefHeight="982.0" prefWidth="223.0" style="-fx-background-color: black;">
          <children>
             <Pane fx:id="catalogPane" layoutY="226.0" prefHeight="48.0" prefWidth="222.7" style="-fx-background-color: black;">
                <children>
@@ -67,14 +67,14 @@
                      </image>
                   </ImageView>
                </children></Pane>
-            <Pane fx:id="branchesPane" layoutY="430.0" prefHeight="48.0" prefWidth="222.7" style="-fx-background-color: black;">
+            <Pane fx:id="librariansPane" layoutY="430.0" prefHeight="48.0" prefWidth="222.7" style="-fx-background-color: black;">
                <children>
-                  <Label fx:id="lblBranches" layoutX="85.0" layoutY="15.0" text="Branches" textFill="WHITE">
+                  <Label fx:id="lblLibrarians" layoutX="85.0" layoutY="15.0" text="Librarians" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="imgBranches" fitHeight="24.0" fitWidth="24.0" layoutX="41.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgLibrarians" fitHeight="24.0" fitWidth="24.0" layoutX="41.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/branchesIconWhite.png" />
                      </image>
@@ -97,11 +97,11 @@
             <Button blendMode="OVERLAY" layoutY="226.0" minHeight="48.0" onAction="#btnCatalogOnAction" prefWidth="222.7" text=" " />
             <Button blendMode="OVERLAY" layoutY="294.0" minHeight="48.0" onAction="#btnBooksOnAction" prefWidth="222.7" text=" " />
             <Button blendMode="OVERLAY" layoutY="362.0" minHeight="48.0" onAction="#btnUsersOnAction" prefWidth="222.7" text=" " />
-            <Button blendMode="OVERLAY" layoutY="430.0" minHeight="48.0" onAction="#btnBranchesOnAction" prefWidth="222.7" text=" " />
+            <Button blendMode="OVERLAY" layoutY="430.0" minHeight="48.0" onAction="#btnLibrariansOnAction" prefWidth="222.7" text=" " />
             <Button blendMode="OVERLAY" layoutY="850.0" minHeight="48.0" onAction="#btnLogOutOnAction" prefWidth="222.7" text=" " />
          </children>
       </Pane>
-      <Pane layoutX="223.0" prefHeight="75.0" prefWidth="1522.0" style="-fx-background-color: white;">
+      <Pane layoutX="223.0" prefHeight="75.0" prefWidth="1573.0" style="-fx-background-color: white;">
          <children>
             <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="20.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -118,13 +118,19 @@
                   <Font size="12.0" />
                </font>
             </Label>
-            <Line endX="100.0" endY="7.636669158935547" layoutX="1360.0" layoutY="57.0" startX="100.0" startY="-48.727176666259766" strokeWidth="2.0" />
-            <Label fx:id="lblTime" layoutX="1369.0" layoutY="15.0" text="12:29 PM">
+            <Line endX="100.0" endY="7.636669158935547" layoutX="1400.0" layoutY="57.0" startX="100.0" startY="-48.727176666259766" strokeWidth="2.0" />
+            <Label fx:id="lblTime" layoutX="1415.0" layoutY="15.0" text="12:29 PM">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblDate" layoutX="1363.0" layoutY="39.0" text="Mar 02, 2024" />
+            <Label fx:id="lblDate" layoutX="1405.0" layoutY="39.0" text="Mar 02, 2024" />
+            <Button blendMode="OVERLAY" layoutX="1515.0" layoutY="17.0" minHeight="40.0" onAction="#btnSettingsOnAction" prefWidth="40.0" style="-fx-background-radius: 12;" text=" " />
+            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="1515.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/settingsIcon.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane fx:id="pagingPane" layoutX="223.0" layoutY="77.0" prefHeight="905.0" prefWidth="1522.0" visible="false" />
@@ -133,12 +139,6 @@
             <Image url="@../assets/transparentImage.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="1696.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/settingsIcon.png" />
-         </image>
-      </ImageView>
-      <Button blendMode="OVERLAY" layoutX="1694.5" layoutY="16.0" minHeight="40.0" onAction="#btnSettingsOnAction" prefWidth="40.0" style="-fx-background-radius: 12;" text=" " />
       <Pane fx:id="popUpPane" layoutX="615.0" layoutY="218.0" prefHeight="491.0" prefWidth="627.0" style="-fx-background-radius: 10;" visible="false" />
       <Pane fx:id="popUpLargePane" layoutX="428.0" layoutY="112.0" prefHeight="729.0" prefWidth="1139.0" style="-fx-background-radius: 10;" visible="false" />
       <Pane fx:id="settingsPane" layoutX="1454.0" layoutY="82.0" prefHeight="140.0" prefWidth="282.0" visible="false" />

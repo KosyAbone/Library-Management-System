@@ -17,7 +17,7 @@
         <fx:include source="AdminGlobal.fxml" />
 
         <!-- Pie Chart Panel -->
-        <Pane fx:id="pieChartPane" layoutX="275.0" layoutY="75.0" prefHeight="631.0" prefWidth="631.0">
+        <Pane fx:id="pieChartPane" layoutX="275.0" layoutY="95.0" prefHeight="631.0" prefWidth="631.0">
             <children>
                 <PieChart fx:id="pieChart" layoutX="18.0" layoutY="15.0" prefHeight="600.0" prefWidth="600.0" />
             </children>
