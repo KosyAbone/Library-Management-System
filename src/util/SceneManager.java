@@ -10,23 +10,23 @@ import javafx.stage.Stage;
 
 public final class SceneManager {
     private static Stage stage;
-    public static final double WIDTH = 1024;
-    public static final double HEIGHT = 768;
 
     // Initialize the stage once
     public static void init(Stage primaryStage) {
         if (stage == null) {
             stage = primaryStage;
-            stage.setMinWidth(WIDTH);
-            stage.setMinHeight(HEIGHT);
         }
     }
 
     // Core scene switching method
     public static void switchToScene(Parent root) {
-        stage.setScene(new Scene(root, WIDTH, HEIGHT));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(true);
+        stage.sizeToScene();
         stage.centerOnScreen();
-    }
+}
+
 
     // Load FXML + switch scene + return controller
     public static <T> T loadAndSwitch(String fxmlPath) throws IOException {

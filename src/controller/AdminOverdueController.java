@@ -86,22 +86,4 @@ public class AdminOverdueController {
     private void btnBorrowedBooksOnAction(ActionEvent event) throws IOException {
             Navigation.switchNavigation("AdminBorrowed.fxml", event);
     }
-    
-    @FXML
-    private void btnHomeOnAction(ActionEvent event) {
-        try {
-            Navigation.switchNavigation("AdminDashboard.fxml", event);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    @FXML
-    private void btnLogOutAction(ActionEvent event) {
-        try {
-            Navigation.switchNavigation("Login.fxml", event);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

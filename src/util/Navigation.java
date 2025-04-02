@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -36,16 +37,25 @@ public class Navigation {
     }
 
     // ✅ New version with controller injection for paging
-    public static <T> void switchPaging(Pane pane, String path, Consumer<T> controllerHandler) throws IOException {
-        FXMLLoader loader = new FXMLLoader(Navigation.class.getResource("/view/" + path));
-        Parent root = loader.load();
+    public static <T> void switchPaging(Pane pagingPane, String path, Consumer<T> controllerHandler) throws IOException {
+    pagingPane.getChildren().clear();
+    FXMLLoader loader = new FXMLLoader(Navigation.class.getResource("/view/" + path));
+    Parent root = loader.load();
 
-        T controller = loader.getController();
-        controllerHandler.accept(controller);
-
-        pane.getChildren().clear();
-        pane.getChildren().add(root);
+    // Anchor the child to all edges
+    if (pagingPane instanceof AnchorPane) {
+        AnchorPane.setTopAnchor(root, 0.0);
+        AnchorPane.setRightAnchor(root, 0.0);
+        AnchorPane.setBottomAnchor(root, 0.0);
+        AnchorPane.setLeftAnchor(root, 0.0);
     }
+
+    pagingPane.getChildren().add(root);
+
+    T controller = loader.getController();
+    controllerHandler.accept(controller);
+}
+
 
     // ✅ Original fallback version (no controller injection)
     public static void switchPaging(Pane pane, String path) throws IOException {

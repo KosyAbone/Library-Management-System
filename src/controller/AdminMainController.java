@@ -25,7 +25,7 @@ public class AdminMainController implements Initializable {
     private Pane booksPane;
 
     @FXML
-    private Pane branchesPane;
+    private Pane librariansPane;
 
     @FXML
     private Pane catalogPane;
@@ -37,7 +37,7 @@ public class AdminMainController implements Initializable {
     private ImageView imgBooks;
 
     @FXML
-    private ImageView imgBranches;
+    private ImageView imgLibrarians;
 
     @FXML
     private ImageView imgCatalog;
@@ -61,7 +61,7 @@ public class AdminMainController implements Initializable {
     private Label lblBooks;
 
     @FXML
-    private Label lblBranches;
+    private Label lblLibrarians;
 
     @FXML
     private Label lblCatalog;
@@ -115,7 +115,7 @@ public class AdminMainController implements Initializable {
     private boolean catalogButtonSelected = false;
     private boolean booksButtonSelected = false;
     private boolean usersButtonSelected = false;
-    private boolean branchesButtonSelected = false;
+    private boolean librariansButtonSelected = false;
     private boolean logOutButtonSelected = false;
 
     @FXML
@@ -155,11 +155,11 @@ public class AdminMainController implements Initializable {
     }
 
     @FXML
-    void btnBranchesOnAction(ActionEvent event) throws IOException {
+    void btnLibrariansOnAction(ActionEvent event) throws IOException {
         buttonUnSelected();
-        branchesButtonSelected = true;
+        librariansButtonSelected = true;
         unSelectedButtons();
-        selectedButton(branchesPane, lblBranches, imgBranches, "branchesIconBlack.png");
+        selectedButton(librariansPane, lblLibrarians, imgLibrarians, "librariansIconBlack.png");
         Navigation.switchPaging(pagingPane, "adminBranchManagementForm.fxml");
     }
 
@@ -219,15 +219,15 @@ public class AdminMainController implements Initializable {
     }
 
     @FXML
-    void btnBranchesOnMouseEntered(MouseEvent event) {
-        if(!branchesButtonSelected) allBtnHoverCss(branchesPane,
-                lblBranches, imgBranches, "branchesIconBlack.png");
+    void btnLibrariansOnMouseEntered(MouseEvent event) {
+        if(!librariansButtonSelected) allBtnHoverCss(librariansPane,
+                lblLibrarians, imgLibrarians, "librariansIconBlack.png");
     }
 
     @FXML
-    void btnBranchesOnMouseExited(MouseEvent event) {
-        if(!branchesButtonSelected) btnUnselected(branchesPane,
-                lblBranches, imgBranches, "branchesIconWhite.png");
+    void btnLibrariansOnMouseExited(MouseEvent event) {
+        if(!librariansButtonSelected) btnUnselected(librariansPane,
+                lblLibrarians, imgLibrarians, "librariansIconWhite.png");
     }
 
     @FXML
@@ -247,7 +247,7 @@ public class AdminMainController implements Initializable {
         catalogButtonSelected = false;
         booksButtonSelected = false;
         usersButtonSelected = false;
-        branchesButtonSelected = false;
+        librariansButtonSelected = false;
         logOutButtonSelected = false;
     }
 
@@ -256,7 +256,7 @@ public class AdminMainController implements Initializable {
         btnUnselected(catalogPane, lblCatalog, imgCatalog, "catalogIconWhite.png");
         btnUnselected(booksPane, lblBooks, imgBooks, "booksIconWhite.png");
         btnUnselected(usersPane, lblUsers, imgUsers, "usersIconWhite.png");
-        btnUnselected(branchesPane, lblBranches, imgBranches, "branchesIconWhite.png");
+        btnUnselected(librariansPane, lblLibrarians, imgLibrarians, "librariansIconWhite.png");
     }
 
     private void selectedButton(Pane pane, Label label, ImageView imageView, String path) {

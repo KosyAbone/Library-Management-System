@@ -1,44 +1,46 @@
 package controller;
 
 import Model.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import javafx.event.ActionEvent;
 import javafx.scene.layout.Pane;
 import util.Navigation;
+import util.DateTime;
 
-public class AdminGlobalController {
+import java.io.IOException;
 
-    @FXML private Pane pagingPane;
-     @FXML private Label lblAdmin;
+public class AdminNaviController {
+
+    @FXML private Label lblAdmin;
     @FXML private Label lblDate;
     @FXML private Label lblTime;
+    @FXML private Pane pagingPane;
 
     private User currentUser;
 
     public void setUser(User user) {
         this.currentUser = user;
-
-        if (user != null) {
-            lblAdmin.setText(user.getFirstName() + " " + user.getLastName());
-        } else {
-            lblAdmin.setText("Admin");
-        }
-
-        setDateTime();
+        lblAdmin.setText(user.getFirstName() + " " + user.getLastName());
+        lblDate.setText(DateTime.dateNowFormatted());
+        lblTime.setText(DateTime.timeNow());
     }
 
-    private void setDateTime() {
-        LocalDateTime now = LocalDateTime.now();
-
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MMM dd, yyyy"); // e.g., Apr 02, 2025
-        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("hh:mm a");       // e.g., 04:22 PM
-
-        lblDate.setText(now.format(dateFormat));
-        lblTime.setText(now.format(timeFormat));
+    @FXML
+    private void initialize() {
+        // Time/date will be injected after setUser() is called
     }
+    
+    public void loadDashboard() {
+    try {
+        Navigation.switchPaging(pagingPane, "AdminDashboard.fxml", (AdminDashboardController controller) -> {
+            controller.setUser(currentUser);
+        });
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
 
     @FXML
     private void btnDashboardOnAction(ActionEvent event) {
@@ -46,7 +48,7 @@ public class AdminGlobalController {
             Navigation.switchPaging(pagingPane, "AdminDashboard.fxml", (AdminDashboardController controller) -> {
                 controller.setUser(currentUser);
             });
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -57,7 +59,7 @@ public class AdminGlobalController {
             Navigation.switchPaging(pagingPane, "AdminBorrowed.fxml", (AdminBorrowedController controller) -> {
                 controller.setUser(currentUser);
             });
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -68,7 +70,7 @@ public class AdminGlobalController {
             Navigation.switchPaging(pagingPane, "AdminBookManagement.fxml", (AdminBookManagementController controller) -> {
                 controller.setUser(currentUser);
             });
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -79,27 +81,23 @@ public class AdminGlobalController {
             Navigation.switchPaging(pagingPane, "AdminUserManagement.fxml", (AdminUserManagementController controller) -> {
                 controller.setUser(currentUser);
             });
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
     private void btnLibrariansOnAction(ActionEvent event) {
-        // TODO: Add support for librarians page
-    }
-
-    @FXML
-    private void btnLogOutOnAction(ActionEvent event) {
-        try {
-            Navigation.switchNavigation("Login.fxml", event);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        // Optional - implement your AdminBranchController here
     }
 
     @FXML
     private void btnSettingsOnAction(ActionEvent event) {
-        // Toggle visibility of settingsPane or open settings popup
+        // Optional - show a settings popup if needed
+    }
+
+    @FXML
+    private void btnLogOutOnAction(ActionEvent event) {
+        Navigation.exit();
     }
 }

@@ -11,10 +11,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="905.0" prefWidth="1522.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminBorrowedController">
+<AnchorPane style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminBorrowedController">
    <children>
-       <fx:include source="AdminGlobal.fxml" />
-       <Pane layoutX="535.0" layoutY="98.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: black; -fx-background-radius: 0 12 12 0;">
+       <Pane layoutX="286.0" layoutY="49.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: black; -fx-background-radius: 0 12 12 0;">
          <children>
             <Label layoutX="47.0" layoutY="9.0" text="Overdue Borrowers" textFill="WHITE">
                <font>
@@ -23,7 +22,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="270.0" layoutY="98.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: #E3E3E3; -fx-background-radius: 12 0 0 12;">
+      <Pane layoutX="28.0" layoutY="49.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: #E3E3E3; -fx-background-radius: 12 0 0 12;">
          <children>
              <Label layoutX="59.0" layoutY="9.0" text="Borrowed Books">
                <font>
@@ -32,7 +31,7 @@
             </Label>
          </children>
       </Pane>
-      <TableView fx:id="tableBorrowedBooks" layoutX="277.0" layoutY="156.0" prefHeight="770.0" prefWidth="1467.0">
+      <TableView fx:id="tableBorrowedBooks" layoutX="28.0" layoutY="107.0" prefHeight="770.0" prefWidth="1467.0">
           <columns>
               <TableColumn fx:id="colBookId" prefWidth="140" text="ISBN" />
               <TableColumn fx:id="colBookTitle" prefWidth="555.2311859130859" text="Title" />
@@ -41,7 +40,7 @@
               <TableColumn fx:id="colDueDate" prefWidth="205.0" text="Due Date" />
           </columns>
       </TableView>
-      <Pane fx:id="searchPane" layoutX="1375.0" layoutY="98.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+      <Pane fx:id="searchPane" layoutX="1126.0" layoutY="49.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
             <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="13.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -55,9 +54,9 @@
             </TextField>
          </children>
       </Pane>
-      <Button blendMode="OVERLAY" layoutX="270.0" layoutY="98.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 12 0 0 12;" text=" " />
-      <Button blendMode="OVERLAY" layoutX="535.0" layoutY="98.0" onAction="#btnOverdueBorrowersOnAction" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 0 12 12 0;" text=" " textFill="WHITE" />
-      <Pane fx:id="btnRefreshPane" layoutX="1695.0" layoutY="94.0" prefHeight="46.0" prefWidth="46.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+      <Button blendMode="OVERLAY" layoutX="28.0" layoutY="49.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 12 0 0 12;" text=" " />
+      <Button blendMode="OVERLAY" layoutX="286.0" layoutY="49.0" onAction="#btnOverdueBorrowersOnAction" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 0 12 12 0;" text=" " textFill="WHITE" />
+      <Pane fx:id="btnRefreshPane" layoutX="1446.0" layoutY="49.0" prefHeight="46.0" prefWidth="46.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
             <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -66,8 +65,8 @@
             </ImageView>
          </children>
       </Pane>
-      <Button blendMode="OVERLAY" layoutX="1695.0" layoutY="94.0" onAction="#btnRefreshTableOnAction" prefHeight="46.0" prefWidth="46.0" style="-fx-background-radius: 12;" text=" " />
-      <Label fx:id="lblSearchAlert" layoutX="1424.0" layoutY="141.0" textFill="RED">
+      <Button blendMode="OVERLAY" layoutX="1446.0" layoutY="49.0" onAction="#btnRefreshTableOnAction" prefHeight="46.0" prefWidth="46.0" style="-fx-background-radius: 12;" text=" " />
+      <Label fx:id="lblSearchAlert" layoutX="1171.0" layoutY="95.0" textFill="RED">
          <font>
             <Font size="11.0" />
          </font>

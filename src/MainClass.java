@@ -13,6 +13,7 @@ public class MainClass extends Application {
         
         // Window configuration
         primaryStage.setTitle("Library Management System");
+        primaryStage.setResizable(true);
         primaryStage.show();
     }
 

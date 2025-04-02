@@ -57,8 +57,10 @@ public class LoginController {
     private void navigateToDashboard(User user, ActionEvent event) {
         try {
             if (user.isAdmin()) {
-                Navigation.switchNavigation("AdminDashboard.fxml", event); {
-            }
+                Navigation.switchNavigation("AdminNavi.fxml", event, (AdminNaviController controller) -> {
+                controller.setUser(user);
+                controller.loadDashboard();
+            });
             
             } else if (user.isMember()) {
                 Navigation.switchNavigation("MemberDashboard.fxml", event, (MemberDashboardController controller) -> {

@@ -11,10 +11,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="905.0" prefWidth="1522.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminOverdueController">
+<AnchorPane style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminOverdueController">
    <children>
-       <fx:include source="AdminGlobal.fxml" />
-      <Pane fx:id="borrowedBooksPane" layoutX="270.0" layoutY="98.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: black; -fx-background-radius: 12 0 0 12;">
+      <Pane fx:id="borrowedBooksPane" layoutX="21.0" layoutY="49.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: black; -fx-background-radius: 12 0 0 12;">
          <children>
             <Label fx:id="lblBorrowedBooks" layoutX="59.0" layoutY="9.0" text="Borrowed Books" textFill="WHITE">
                <font>
@@ -24,7 +23,7 @@
          </children>
       </Pane>
 
-      <Pane layoutX="531.0" layoutY="101.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: #E3E3E3; -fx-background-radius: 0 12 12 0;">
+      <Pane layoutX="282.0" layoutY="52.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: #E3E3E3; -fx-background-radius: 0 12 12 0;">
          <children>
             <Label layoutX="47.0" layoutY="9.0" text="Overdue Borrowers">
                <font>
@@ -34,22 +33,22 @@
          </children>
       </Pane>
 
-      <TableView fx:id="overdueTable" layoutX="277.0" layoutY="156.0" prefHeight="771.0" prefWidth="1467.0">
+      <TableView fx:id="overdueTable" layoutX="28.0" layoutY="107.0" prefHeight="771.0" prefWidth="1467.0">
          <columns>
             <TableColumn fx:id="colUserId" prefWidth="120.0" text="User ID" />
             <TableColumn fx:id="colUsername" prefWidth="160.0" text="Username" />
             <TableColumn fx:id="colBookTitle" prefWidth="509.9889221191406" text="Book Title" />
             <TableColumn fx:id="colDueDate" prefWidth="300.0" text="Due Date" />
-            <TableColumn fx:id="colBorrowDate" prefWidth="300.0" text="Borrowed Date" />
+            <TableColumn fx:id="colBorrowedDate" prefWidth="300.0" text="Borrowed Date" />
             <TableColumn fx:id="colAction" prefWidth="101.0" text="Action" />
          </columns>
       </TableView>
 
-      <Button blendMode="OVERLAY" layoutX="277.0" layoutY="98.0" onAction="#btnBorrowedBooksOnAction" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 12 0 0 12;" text=" " />
+      <Button blendMode="OVERLAY" layoutX="28.0" layoutY="49.0" onAction="#btnBorrowedBooksOnAction" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 12 0 0 12;" text=" " />
 
-      <Button blendMode="OVERLAY" layoutX="535.0" layoutY="98.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 0 12 12 0;" text=" " />
+      <Button blendMode="OVERLAY" layoutX="286.0" layoutY="49.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 0 12 12 0;" text=" " />
 
-      <Pane fx:id="searchPane" layoutX="1375.0" layoutY="98.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+      <Pane fx:id="searchPane" layoutX="1126.0" layoutY="49.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
             <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="13.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -64,7 +63,7 @@
          </children>
       </Pane>
 
-      <Pane fx:id="btnRefreshPane" layoutX="1695.0" layoutY="98.0" prefHeight="46.0" prefWidth="46.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+      <Pane fx:id="btnRefreshPane" layoutX="1446.0" layoutY="49.0" prefHeight="46.0" prefWidth="46.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
             <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -74,8 +73,8 @@
          </children>
       </Pane>
 
-      <Button blendMode="OVERLAY" layoutX="1695.0" layoutY="98.0" onAction="#btnRefreshTableOnAction" prefHeight="46.0" prefWidth="46.0" style="-fx-background-radius: 12;" text=" " />
-      <Label fx:id="lblSearchAlert" layoutX="1420.0" layoutY="144.0" textFill="RED">
+      <Button blendMode="OVERLAY" layoutX="1446.0" layoutY="49.0" onAction="#btnRefreshTableOnAction" prefHeight="46.0" prefWidth="46.0" style="-fx-background-radius: 12;" text=" " />
+      <Label fx:id="lblSearchAlert" layoutX="1171.0" layoutY="95.0" textFill="RED">
          <font>
             <Font size="11.0" />
          </font>
