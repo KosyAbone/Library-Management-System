@@ -58,22 +58,17 @@ public class LoginController {
         try {
             if (user.isAdmin()) {
                 Navigation.switchNavigation("AdminDashboard.fxml", event); {
-                
-                System.out.println(user);
             }
             
             } else if (user.isMember()) {
-              //  Navigation.switchNavigation("MemberDashboard.fxml", event); {
-           // }
-           Navigation.openPopup("MemberDashboard.fxml", (MemberDashboardController controller) -> {
-            controller.setUser(user);
-            
-            System.out.println(user);
+                Navigation.switchNavigation("MemberDashboard.fxml", event, (MemberDashboardController controller) -> {
+                    controller.setUser(user);
         });
                 
             } else if (user.isLibrarian()) {
-                Navigation.switchNavigation("LibrarianDashboard.fxml", event); {
-            }
+                Navigation.switchNavigation("LibrarianDashboard.fxml", event, (MemberDashboardController controller) -> {
+                    controller.setUser(user);
+            });
                 
             } else {
                 showAlert("Unknown user role: " + user.getUserType());

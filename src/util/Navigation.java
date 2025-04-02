@@ -6,35 +6,54 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import javafx.stage.Modality;
-import controller.AdminMainController;
-import controller.MemberMainController;
-import java.util.function.Consumer;
-
+import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.function.Consumer;
 
 public class Navigation {
 
     private static Stage stage;
 
-    public static void switchNavigation(String path, ActionEvent event) throws IOException {
-        Scene scene = new Scene(FXMLLoader.load(Navigation.class.getResource("/view/" + path)));
+    // ✅ New version with controller injection support
+    public static <T> void switchNavigation(String fxmlpath, ActionEvent event, Consumer<T> controllerHandler) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Navigation.class.getResource("/view/" + fxmlpath));
+        Parent root = loader.load();
+
+        T controller = loader.getController();
+        controllerHandler.accept(controller);
+
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
+        stage.setScene(new Scene(root));
         stage.centerOnScreen();
         stage.show();
     }
 
-    public static void switchPaging(Pane pane, String path) throws IOException {
-        pane.getChildren().clear();
+    // ✅ Original fallback version (no controller injection)
+     public static void switchNavigation(String path, ActionEvent event) throws IOException {
+        switchNavigation(path, event, controller -> {}); // empty lambda
+    }
+
+    // ✅ New version with controller injection for paging
+    public static <T> void switchPaging(Pane pane, String path, Consumer<T> controllerHandler) throws IOException {
         FXMLLoader loader = new FXMLLoader(Navigation.class.getResource("/view/" + path));
         Parent root = loader.load();
+
+        T controller = loader.getController();
+        controllerHandler.accept(controller);
+
+        pane.getChildren().clear();
         pane.getChildren().add(root);
     }
-    
-    public static <T> void openPopup(String fxmlPath, java.util.function.Consumer<T> controllerHandler) throws IOException {
+
+    // ✅ Original fallback version (no controller injection)
+    public static void switchPaging(Pane pane, String path) throws IOException {
+        switchPaging(pane, path, controller -> {}); // empty lambda
+    }
+
+    // ✅ Popup already supports injection — unchanged
+    public static <T> void openPopup(String fxmlPath, Consumer<T> controllerHandler) throws IOException {
         FXMLLoader loader = new FXMLLoader(Navigation.class.getResource("/view/" + fxmlPath));
         Parent root = loader.load();
 
@@ -47,8 +66,7 @@ public class Navigation {
         popupStage.initModality(Modality.APPLICATION_MODAL);
         popupStage.setResizable(false);
         popupStage.showAndWait();
-}
-
+    }
 
     public static void close(ActionEvent actionEvent) {
         Node node = (Node) actionEvent.getSource();

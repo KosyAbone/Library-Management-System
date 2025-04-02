@@ -16,25 +16,23 @@ public class MemberDashboardController {
 
     @FXML
     private void btnBorrowedBookOnAction(ActionEvent event) throws IOException {
-            Navigation.switchNavigation("MemberBorrowedBooks.fxml", event); {
-            
-        }
+            Navigation.switchNavigation("MemberBorrowedBooks.fxml", event, (MemberBorrowedBooksController controller) -> {
+        controller.setUser(currentUser);
+            });
     }
 
     @FXML
     private void btnReturnedBookOnAction(ActionEvent event) throws IOException {
-            Navigation.switchNavigation("MemberReturnedBooks.fxml", event); {
-            
-        }
+            Navigation.switchNavigation("MemberReturnedBooks.fxml", event, (MemberReturnedBooksController controller) -> {
+        controller.setUser(currentUser);
+            });
     }
 
     @FXML
     private void btnAvailableBookOnAction(ActionEvent event) throws IOException {
-            Navigation.openPopup("MemberBorrow.fxml", (MemberBorrowController controller) -> {
-            controller.setUser(currentUser);
-            
-            System.out.println("User from Dashboard to borrow " + currentUser);
-            });
+            Navigation.switchNavigation("MemberBorrow.fxml", event, (MemberBorrowController controller) -> {
+                    controller.setUser(currentUser);
+        });
     }
     
     @FXML

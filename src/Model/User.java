@@ -98,4 +98,24 @@ public class User {
         return new BorrowRecordDAO().getBorrowedBooksCount(this.userId);
     }
     
+     public boolean isAdmin() {
+        return "ADMIN".equalsIgnoreCase(userType);
+    }
+
+    public boolean isLibrarian() {
+        return "LIBRARIAN".equalsIgnoreCase(userType);
+    }
+
+    public boolean isMember() {
+        return "MEMBER".equalsIgnoreCase(userType);
+    }
+
+    public boolean isStudent() {
+        return isMember() && "STUDENT".equalsIgnoreCase(memberType);
+    }
+
+    public boolean isFaculty() {
+        return isMember() && "FACULTY".equalsIgnoreCase(memberType);
+    }
+    
 }
