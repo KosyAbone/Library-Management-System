@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="905.0" prefWidth="1655.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MemberBorrowController">
+   <children>
+       <Pane fx:id="homePane" layoutX="728.0" layoutY="25.0" prefHeight="44.0" prefWidth="44.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+           <children>
+               <ImageView fx:id="imgHome" fitHeight="24.0" fitWidth="24.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="@../assets/dashboardIconBlack.png" />
+                   </image>
+               </ImageView>
+           </children>
+       </Pane>
+       <Button blendMode="OVERLAY" layoutX="728.0" layoutY="25.0" onAction="#btnHomeOnAction" prefHeight="44.0" prefWidth="44.0" style="-fx-background-radius: 10;" text=" " />
+      <Button layoutX="-71.0" text=" " />
+      <Pane layoutX="1534.0" layoutY="93.0" prefHeight="812.5" prefWidth="121.0" style="-fx-background-color: black; -fx-background-radius: 12 0 0 0;">
+         <children>
+            <Text fill="WHITE" layoutX="-132.0" layoutY="412.0" rotate="-90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIBRARY MANAGEMENT SYSTEM" textAlignment="CENTER" wrappingWidth="384.4582549769573">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Label layoutX="27.0" layoutY="32.0" text="Library Books">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Pane layoutX="21.0" layoutY="93.0" prefHeight="799.0" prefWidth="1492.0" style="-fx-background-color: white; -fx-background-radius: 12px;">
+         <children>
+            <Line endX="1349.369140625" layoutX="121.0" layoutY="40.0" startX="-100.0" />
+            <HBox alignment="CENTER_LEFT" layoutX="62.0" layoutY="15.0" prefHeight="60.0" prefWidth="1409.0">
+            </HBox>
+            <Pane layoutX="1472.0" layoutY="73.0" prefHeight="722.0" prefWidth="17.0" style="-fx-background-color: white;" />
+              <TableView fx:id="booksTable" layoutX="18.0" layoutY="50.0" prefHeight="725.0" prefWidth="1451.0">
+                  <columns>
+                      <TableColumn fx:id="bookIdColumn" prefWidth="125.15163040161133" text="ISBN" />
+                      <TableColumn fx:id="bookTitle" prefWidth="648.5329437255859" text="Title" />
+                      <TableColumn fx:id="bookAuthorColumn" minWidth="0.0" prefWidth="335.967041015625" text="Author" />
+                      <TableColumn fx:id="bookStatusColumn" minWidth="0.0" prefWidth="240.209228515625" text="Availability" />
+                      <TableColumn fx:id="bookActionsColumn" prefWidth="99.790771484375" text="Actions" />
+                  </columns>
+              </TableView>
+         </children>
+      </Pane>
+      <Pane fx:id="BorrowBookPane" layoutX="1144.0" layoutY="24.0" prefHeight="44.0" prefWidth="136.0" style="-fx-background-color: black; -fx-background-radius: 12;">
+         <children>
+            <Label fx:id="lblBorrow" layoutX="52.0" layoutY="12.0" text="Borrow" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgBorrow" fitHeight="24.0" fitWidth="24.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/addIconWhite.png" />
+               </image> 
+            </ImageView>
+         </children>
+      </Pane>
+      <Button blendMode="OVERLAY" layoutX="1144.0" layoutY="24.0" onAction="#btnBorrowBookOnAction" prefHeight="44.0" prefWidth="136.0" style="-fx-background-radius: 12;" text=" " />
+      <Pane fx:id="searchPane" layoutX="1290.0" layoutY="24.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+         <children>
+            <Button blendMode="OVERLAY" layoutX="5.0" layoutY="6.0" onAction="#handleBookSearch" prefHeight="38.0" prefWidth="38.0" style="-fx-background-radius: 12;" text=" " />
+            <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="13.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/searchIcon.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="bookSearchField" layoutX="47.0" layoutY="1.0" prefHeight="44.0" prefWidth="251.0" promptText="Search by ISBN | Title | Author" style="-fx-background-color: white; -fx-background-radius: 0 12 12 0;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+         </children>
+      </Pane>
+      <Pane fx:id="btnRefreshPane" layoutX="1600.0" layoutY="24.0" prefHeight="46.0" prefWidth="46.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/refreshTableIcon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Button blendMode="OVERLAY" layoutX="1600.0" layoutY="24.0" onAction="#btnRefreshTableOnAction" prefHeight="46.0" prefWidth="46.0" style="-fx-background-radius: 12;" text=" ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Pane fx:id="logoutPane" layoutX="1570.0" layoutY="825.0" prefHeight="44.0" prefWidth="44.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+           <children>
+               <ImageView fx:id="imglogout" fitHeight="24.0" fitWidth="24.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="@../assets/logOutIconBlack.png" />
+                   </image>
+               </ImageView>
+           </children>
+       </Pane>
+       <Button blendMode="OVERLAY" layoutX="1570.0" layoutY="825.0" onAction="#btnLogOutAction" prefHeight="44.0" prefWidth="44.0" style="-fx-background-radius: 10;" text=" " />
+      <Label fx:id="lblSearchAlert" layoutX="1306.0" layoutY="72.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

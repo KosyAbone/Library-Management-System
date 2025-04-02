@@ -36,32 +36,30 @@ public class UserDAO {
     }
 
 
-    public User updateUser(User user) {
+    // In UserDAO.java - modify to make both methods return boolean
+    public boolean updateUser(User user) {
         if (user == null || user.getPassword() == null) {
-            return null;
+            return false;
         }
 
         String sql = "UPDATE users SET username=?, password=?, first_name=?, last_name=?, email=?, " +
                      "phone=?, user_type=?, member_type=? WHERE user_id=?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            // Check if the password is already hashed
             String passwordToStore = user.getPassword();
             if (!PasswordUtils.isHashedPassword(passwordToStore)) {
-                passwordToStore = PasswordUtils.hashPassword(passwordToStore);  // Hash if plain text
+                passwordToStore = PasswordUtils.hashPassword(passwordToStore);
             }
-            user.setPassword(passwordToStore);  // Update the user object with hashed password
+            user.setPassword(passwordToStore);
 
-            setUserParameters(ps, user);  // Set all other user fields
-            ps.setInt(9, user.getUserId());  // Set user ID
+            setUserParameters(ps, user);
+            ps.setInt(9, user.getUserId());
 
-            int rowsAffected = ps.executeUpdate();
-            return rowsAffected > 0 ? user : null;
+            return ps.executeUpdate() > 0;
         } catch (SQLException ex) {
             handleSQLException(ex);
-            return null;
+            return false;
         }
     }
-
     
     public User updatePassword(int userId, String newPassword) {
         if (newPassword == null) return null;

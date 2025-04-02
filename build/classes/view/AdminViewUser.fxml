@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="491.0" prefWidth="627.0" style="-fx-background-color: white; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminViewUserController">
+    <children>
+
+        <!-- Title -->
+        <Pane layoutX="48.0" layoutY="48.0" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #D7D7D7; -fx-background-radius: 10;">
+            <ImageView fitHeight="39.89" fitWidth="41.68" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../assets/usersIconBlack.png" />
+                </image>
+            </ImageView>
+        </Pane>
+        <Label layoutX="124.0" layoutY="66.0" text="View User">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+
+        <!-- Close Button -->
+        <Pane fx:id="exitPane" layoutX="519.0" layoutY="54.0" prefHeight="48.0" prefWidth="48.0" style="-fx-background-radius: 10;">
+         <children>
+            <ImageView fx:id="imgExit" fitHeight="24.0" fitWidth="24.0" layoutX="12.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/closeIconBlack.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+        <Button blendMode="OVERLAY" layoutX="519.0" layoutY="54.0" onAction="#btnExitOnAction" prefHeight="48.0" prefWidth="48.0" style="-fx-background-radius: 10;" text=" " />
+
+        <Line endX="429.0" endY="0.0" layoutX="149.0" layoutY="128.0" startX="-100.0" />
+
+        <!-- Info Labels -->
+        <Pane layoutX="48.0" layoutY="162.0" prefHeight="195.0" prefWidth="531.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #DDDDDD; -fx-border-radius: 10;">
+         <children>
+        <Label layoutX="44.0" layoutY="14.0" text="Full Name:" />
+        <Label fx:id="lblFullName" layoutX="171.0" layoutY="14.0" style="-fx-font-weight: bold;" />
+
+        <Label layoutX="44.0" layoutY="44.0" text="Username:" />
+        <Label fx:id="lblUsername" layoutX="171.0" layoutY="44.0" style="-fx-font-weight: bold;" />
+
+        <Label layoutX="44.0" layoutY="74.0" text="Email:" />
+        <Label fx:id="lblEmail" layoutX="171.0" layoutY="74.0" style="-fx-font-weight: bold;" />
+
+        <Label layoutX="44.0" layoutY="104.0" text="Phone:" />
+        <Label fx:id="lblPhone" layoutX="171.0" layoutY="104.0" style="-fx-font-weight: bold;" />
+
+        <Label layoutX="44.0" layoutY="134.0" text="User Type:" />
+        <Label fx:id="lblUserType" layoutX="171.0" layoutY="134.0" style="-fx-font-weight: bold;" />
+
+        <Label layoutX="44.0" layoutY="164.0" text="Member Type:" />
+        <Label fx:id="lblMemberType" layoutX="171.0" layoutY="164.0" style="-fx-font-weight: bold;" />
+         </children>
+        </Pane>
+
+        <!-- Close Action Button -->
+         <Button layoutX="184.0" layoutY="391.0" onAction="#btnCloseOnAction" prefHeight="54.0" prefWidth="259.0" style="-fx-background-radius: 10;" text=" " />
+        <Pane fx:id="closePane" layoutX="184.0" layoutY="391.0" prefHeight="54.0" prefWidth="259.0" style="-fx-background-color: black; -fx-background-radius: 10;">
+         <children>
+            <Label fx:id="lblClose" layoutX="101.0" layoutY="17.0" text="CLOSE" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+
+    </children>
+</Pane>
