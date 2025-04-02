@@ -1,3 +1,7 @@
+/**
+ *
+ * @author kossy
+ */
 package util;
 
 import java.security.MessageDigest;
@@ -59,10 +63,5 @@ public class PasswordUtils {
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException("Error verifying password", e);
         }
-    }
-
-    public static boolean isHashedPassword(String password) {
-        // Assuming a hashed password has a length of 64 characters (for SHA-256)
-        return password.length() == 64;
     }
 }
