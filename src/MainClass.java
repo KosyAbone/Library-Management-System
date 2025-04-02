@@ -9,7 +9,6 @@ public class MainClass extends Application {
         // Initialize SceneManager with global dimensions
         SceneManager.init(primaryStage);
         
-        // Load first scene using advanced method
         SceneManager.loadAndSwitch("/view/Login.fxml");
         
         // Window configuration

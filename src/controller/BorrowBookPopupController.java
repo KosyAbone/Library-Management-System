@@ -66,16 +66,16 @@ public class BorrowBookPopupController {
         record.setDueDate(Date.valueOf(DateTime.dateAftermonth()));
         record.setStatus("BORROWED");
 
-        boolean success = borrowRecordDAO.addBorrowRecord(record);
+        String response = borrowRecordDAO.borrowBook(record.getBookId(), record.getUserId());
 
-        if (success) {
+        if (response.startsWith("Success")) {
             bookDAO.updateAvailableQuantity(selectedBook.getBookId(), -1);
             if (onBorrowSuccess != null) {
                 onBorrowSuccess.run();
             }
             closePopup();
         } else {
-            showAlert("Borrow Failed", "Could not complete borrow request.");
+            showAlert(" ", response);
         }
     }
 

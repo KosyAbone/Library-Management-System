@@ -53,8 +53,8 @@ public class ReturnBookPopupController {
         borrowRecord.setReturnDate(Date.valueOf(LocalDate.now()));
         borrowRecord.setStatus("RETURNED");
 
-        boolean success = borrowRecordDAO.updateBorrowRecord(borrowRecord);
-        if (success) {
+        String response = borrowRecordDAO.returnBook(borrowRecord.getBorrowId());
+        if (response.startsWith("Success")) {
             bookDAO.updateAvailableQuantity(borrowRecord.getBookId(), 1);
 
             if (onReturnSuccess != null) {
@@ -63,7 +63,7 @@ public class ReturnBookPopupController {
 
             closePopup();
         } else {
-            showAlert("Return failed. Please try again.");
+            showAlert(response);
         }
     }
 
