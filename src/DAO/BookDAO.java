@@ -29,6 +29,7 @@ public class BookDAO {
     }
 
     public boolean updateBook(Book book) {
+        System.out.print("update fnxn called");
         String sql = "UPDATE books SET isbn=?, title=?, author=?, genre=?, quantity=?, " +
                     "available_quantity=?, publication_year=?, publisher=?, description=?, status=? " +
                     "WHERE book_id=?";
@@ -123,7 +124,8 @@ public class BookDAO {
         // First get current quantity
         Book book = getBookById(bookId);
         if (book == null) return false;
-
+        if(book.getAvailableQuantity() <= 0) return false;
+        
         int newQuantity = book.getAvailableQuantity() + change;
 
         String sql = "UPDATE books SET available_quantity = ?, status = ? WHERE book_id=?";

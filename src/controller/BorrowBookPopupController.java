@@ -69,7 +69,7 @@ public class BorrowBookPopupController {
         String response = borrowRecordDAO.borrowBook(record.getBookId(), record.getUserId());
 
         if (response.startsWith("Success")) {
-            bookDAO.updateAvailableQuantity(selectedBook.getBookId(), -1);
+            
             if (onBorrowSuccess != null) {
                 onBorrowSuccess.run();
             }

@@ -60,7 +60,6 @@ public class ReturnBookPopupController {
 
         String response = borrowRecordDAO.returnBook(borrowRecord.getBorrowId());
         if (response.startsWith("Success")) {
-            bookDAO.updateAvailableQuantity(borrowRecord.getBookId(), 1);
 
             if (onReturnSuccess != null) {
                 onReturnSuccess.accept(null);

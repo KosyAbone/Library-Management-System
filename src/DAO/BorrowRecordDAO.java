@@ -249,13 +249,6 @@ public class BorrowRecordDAO {
         return Date.valueOf(LocalDate.now().plusDays(STANDARD_LOAN_DAYS));
     }
 
-    private String executeBookUpdate(int bookId, int quantityChange) throws SQLException {
-        if (!bookDAO.updateAvailableQuantity(bookId, quantityChange)) {
-            return "Error: Failed to update book quantity";
-        }
-        return null;
-    }
-
     private String validateBorrowPreconditions(int bookId, int userId) throws SQLException {
         Book book = bookDAO.getBookById(bookId);
         if (book == null) return "Error: Book not found";
@@ -268,6 +261,12 @@ public class BorrowRecordDAO {
         return null;
     }
     
+    private String executeBookUpdate(int bookId, int quantityChange) throws SQLException {
+        if (!bookDAO.updateAvailableQuantity(bookId, quantityChange)) {
+            return "Error: Failed to update book quantity";
+        }
+        return null;
+    }
     
     // ========== EXTRACTED HELPER METHODS ==========
     private boolean createBorrowRecord(int bookId, int userId, Date borrowDate, Date dueDate, String status) {
