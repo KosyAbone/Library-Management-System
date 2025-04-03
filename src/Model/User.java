@@ -2,10 +2,6 @@ package Model;
 
 import DAO.BorrowRecordDAO;
 
-/**
- *
- * @author kossy
- */
 public class User {
     private int userId;
     private String username;
