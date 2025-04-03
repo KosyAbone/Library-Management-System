@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="250.0" prefWidth="400.0" spacing="10" style="-fx-background-color: white; -fx-padding: 20;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LibrarianReturnBookPopupController">
+   <children>
+      <Label text="Return Book" style="-fx-font-weight: bold; -fx-font-size: 18;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      
+      <Label text="Select Borrowed Book:" />
+      <ComboBox fx:id="cbBorrowedBooks" prefWidth="350.0" />
+      
+      <Label fx:id="lblError" style="-fx-text-fill: red;" />
+      
+      <HBox spacing="10" alignment="CENTER_RIGHT">
+         <children>
+            <Button mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+            <Button mnemonicParsing="false" onAction="#handleReturnBook" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="Process Return" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

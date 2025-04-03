@@ -1,7 +1,10 @@
 package controller;
 
 import DAO.BookDAO;
+import DAO.BorrowRecordDAO;
+import DAO.UserDAO;
 import Model.Book;
+import Model.BorrowRecord;
 import Model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,11 +12,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
 import util.Navigation;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LibrarianBookManagementController implements UserAwareController {
 
@@ -24,10 +27,13 @@ public class LibrarianBookManagementController implements UserAwareController {
     @FXML private TableColumn<Book, Integer> colTotalQty;
     @FXML private TableColumn<Book, Integer> colAvailableQty;
     @FXML private TableColumn<Book, String> colStatus;
-    @FXML private TableColumn<Book, Void> colAction;
     @FXML private TextField txtSearch;
+    @FXML private Button btnIssueBook;
+    @FXML private Button btnReturnBook;
     
     private final BookDAO bookDAO = new BookDAO();
+    private final BorrowRecordDAO borrowRecordDAO = new BorrowRecordDAO();
+    private final UserDAO userDAO = new UserDAO();
     private User currentUser;
     private ObservableList<Book> bookList = FXCollections.observableArrayList();
 
@@ -50,40 +56,6 @@ public class LibrarianBookManagementController implements UserAwareController {
         colTotalQty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         colAvailableQty.setCellValueFactory(new PropertyValueFactory<>("availableQuantity"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-        
-        colAction.setCellFactory(new Callback<>() {
-            @Override
-            public TableCell<Book, Void> call(TableColumn<Book, Void> param) {
-                return new TableCell<>() {
-                    private final Button actionButton = new Button();
-                    
-                    {
-                        actionButton.setOnAction(event -> {
-                            Book book = getTableView().getItems().get(getIndex());
-                            handleBookAction(book);
-                        });
-                    }
-
-                    @Override
-                    protected void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            Book book = getTableView().getItems().get(getIndex());
-                            if (book.getAvailableQuantity() > 0) {
-                                actionButton.setText("Issue");
-                                actionButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
-                            } else {
-                                actionButton.setText("Return");
-                                actionButton.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white;");
-                            }
-                            setGraphic(actionButton);
-                        }
-                    }
-                };
-            }
-        });
     }
 
     private void loadBooks() {
@@ -108,18 +80,45 @@ public class LibrarianBookManagementController implements UserAwareController {
         booksTable.setItems(filteredList);
     }
 
-    private void handleBookAction(Book book) {
+    @FXML
+    private void handleIssueBook(ActionEvent event) {
         try {
-            if (book.getAvailableQuantity() > 0) {
-                Navigation.openPopup("LibrarianIssueBookPopup.fxml", controller -> {
-                    LibrarianIssueBookPopupController popupController = (LibrarianIssueBookPopupController) controller;
-                    popupController.setBook(book);
-                    popupController.setCurrentUser(currentUser);
-                    popupController.setOnSuccess(this::loadBooks);
-                });
-            } else {
-                // Return book implementation would go here
+            List<Book> availableBooks = bookList.stream()
+                .filter(book -> book.getAvailableQuantity() > 0)
+                .collect(Collectors.toList());
+            
+            if (availableBooks.isEmpty()) {
+                showAlert("No Books Available", "There are no books available for issuing.");
+                return;
             }
+            
+            Navigation.openPopup("LibrarianIssueBookPopup.fxml", controller -> {
+                LibrarianIssueBookPopupController popupController = (LibrarianIssueBookPopupController) controller;
+                popupController.setAvailableBooks(availableBooks);
+                popupController.setCurrentUser(currentUser);
+                popupController.setOnSuccess(this::loadBooks);
+            });
+        } catch (IOException e) {
+            showAlert("Error", "Failed to open dialog: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void handleReturnBook(ActionEvent event) {
+        try {
+            List<BorrowRecord> borrowedBooks = borrowRecordDAO.getAllBorrowRecords();
+            
+            if (borrowedBooks.isEmpty()) {
+                showAlert("No Books Borrowed", "There are no books currently borrowed.");
+                return;
+            }
+            
+            Navigation.openPopup("LibrarianReturnBookPopup.fxml", controller -> {
+                LibrarianReturnBookPopupController popupController = (LibrarianReturnBookPopupController) controller;
+                popupController.setBorrowedBooks(borrowedBooks);
+                popupController.setCurrentUser(currentUser);
+                popupController.setOnSuccess(this::loadBooks);
+            });
         } catch (IOException e) {
             showAlert("Error", "Failed to open dialog: " + e.getMessage());
         }
