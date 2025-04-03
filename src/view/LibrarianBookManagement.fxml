@@ -29,10 +29,18 @@
       <!-- Main Content Area -->
       <Pane layoutX="21.0" layoutY="93.0" prefHeight="799.0" prefWidth="1492.0" style="-fx-background-color: white; -fx-background-radius: 12px;">
          <children>
-            <Line endX="1349.0" layoutX="121.0" layoutY="40.0" startX="-100.0" stroke="#E0E0E0" />
+            <Line endX="1349.0" layoutX="121.0" layoutY="80.0" startX="-100.0" stroke="#E0E0E0" />
+            
+            <!-- Action Buttons -->
+            <HBox layoutX="18.0" layoutY="20.0" spacing="10">
+               <children>
+                  <Button fx:id="btnIssueBook" mnemonicParsing="false" onAction="#handleIssueBook" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Issue Book" />
+                  <Button fx:id="btnReturnBook" mnemonicParsing="false" onAction="#handleReturnBook" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold;" text="Process Return" />
+               </children>
+            </HBox>
             
             <!-- Books Table with Quantity Tracking -->
-            <TableView fx:id="booksTable" layoutX="18.0" layoutY="50.0" prefHeight="725.0" prefWidth="1451.0">
+            <TableView fx:id="booksTable" layoutX="18.0" layoutY="90.0" prefHeight="685.0" prefWidth="1451.0">
                <columns>
                   <TableColumn fx:id="colIsbn" prefWidth="120.0" text="ISBN" />
                   <TableColumn fx:id="colTitle" prefWidth="300.0" text="Book Title" />
@@ -40,7 +48,6 @@
                   <TableColumn fx:id="colTotalQty" prefWidth="100.0" text="Total" />
                   <TableColumn fx:id="colAvailableQty" prefWidth="100.0" text="Available" />
                   <TableColumn fx:id="colStatus" prefWidth="150.0" text="Status" />
-                  <TableColumn fx:id="colAction" prefWidth="150.0" text="Action" />
                </columns>
             </TableView>
          </children>

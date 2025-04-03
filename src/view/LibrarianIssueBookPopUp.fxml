@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.*?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controller.LibrarianIssueBookPopupController" spacing="10" alignment="CENTER" padding="20">
-    <Label text="Issue Book" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
-    <TextField fx:id="txtMemberId" promptText="Member ID"/>
-    <TextField fx:id="txtBookId" promptText="Book ID"/>
-    <DatePicker fx:id="datePickerDue" promptText="Select Due Date"/>
-    <Button text="Issue Book" onAction="#handleIssueBook"/>
+<VBox prefHeight="300.0" prefWidth="400.0" spacing="10" style="-fx-background-color: white; -fx-padding: 20;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LibrarianIssueBookPopupController">
+   <children>
+      <Label text="Issue Book" style="-fx-font-weight: bold; -fx-font-size: 18;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      
+      <Label text="Select Book:" />
+      <ComboBox fx:id="cbBooks" prefWidth="350.0" />
+      
+      <Label text="Select User:" />
+      <ComboBox fx:id="cbUsers" prefWidth="350.0" />
+      
+      <Label fx:id="lblError" style="-fx-text-fill: red;" />
+      
+      <HBox spacing="10" alignment="CENTER_RIGHT">
+         <children>
+            <Button mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+            <Button mnemonicParsing="false" onAction="#handleIssueBook" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Issue Book" />
+         </children>
+      </HBox>
+   </children>
 </VBox>

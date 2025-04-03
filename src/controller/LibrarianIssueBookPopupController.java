@@ -5,77 +5,138 @@ import DAO.UserDAO;
 import Model.BorrowRecord;
 import Model.User;
 import Model.Book;
+import java.util.List;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.util.Callback;
 
 public class LibrarianIssueBookPopupController {
 
-    @FXML private Label lblBookTitle;
-    @FXML private Label lblIsbn;
-    @FXML private Label lblAvailable;
-    @FXML private TextField txtMemberId;
+    @FXML private ComboBox<Book> cbBooks;
+    @FXML private ComboBox<User> cbUsers;
     @FXML private Label lblError;
     
-    private Book currentBook;
-    private User user;
+    private ObservableList<Book> availableBooks;
+    private ObservableList<User> availableUsers;
+    private User currentUser;
     private Runnable onSuccess;
     private final UserDAO userDAO = new UserDAO();
+    private final BorrowRecordDAO borrowRecordDAO = new BorrowRecordDAO();
 
-    public void setBook(Book book) {
-        this.currentBook = book;
-        updateUI();
+    @FXML
+    public void initialize() {
+        // Set up custom cell factories for the ComboBoxes
+        cbBooks.setCellFactory(new Callback<ListView<Book>, ListCell<Book>>() {
+            @Override
+            public ListCell<Book> call(ListView<Book> param) {
+                return new ListCell<Book>() {
+                    @Override
+                    protected void updateItem(Book item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item == null || empty) {
+                            setText(null);
+                        } else {
+                            setText(item.getTitle() + " by " + item.getAuthor() + " (ISBN: " + item.getIsbn() + ")");
+                        }
+                    }
+                };
+            }
+        });
+        
+        cbBooks.setButtonCell(new ListCell<Book>() {
+            @Override
+            protected void updateItem(Book item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setText(null);
+                } else {
+                    setText(item.getTitle() + " by " + item.getAuthor());
+                }
+            }
+        });
+        
+        cbUsers.setCellFactory(new Callback<ListView<User>, ListCell<User>>() {
+            @Override
+            public ListCell<User> call(ListView<User> param) {
+                return new ListCell<User>() {
+                    @Override
+                    protected void updateItem(User item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item == null || empty) {
+                            setText(null);
+                        } else {
+                            setText(item.getFirstName() + " " + item.getLastName() + " (ID: " + item.getUserId() + ")");
+                        }
+                    }
+                };
+            }
+        });
+        
+        cbUsers.setButtonCell(new ListCell<User>() {
+            @Override
+            protected void updateItem(User item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setText(null);
+                } else {
+                    setText(item.getFirstName() + " " + item.getLastName());
+                }
+            }
+        });
+    }
+
+    public void setAvailableBooks(List<Book> books) {
+        this.availableBooks = FXCollections.observableArrayList(books);
+        cbBooks.setItems(availableBooks);
     }
 
     public void setCurrentUser(User user) {
-        this.user = user;
+        this.currentUser = user;
+        loadAvailableUsers();
     }
 
     public void setOnSuccess(Runnable onSuccess) {
         this.onSuccess = onSuccess;
     }
 
-    private void updateUI() {
-        lblBookTitle.setText(currentBook.getTitle());
-        lblIsbn.setText(currentBook.getIsbn());
-        lblAvailable.setText(String.valueOf(currentBook.getAvailableQuantity()));
+    private void loadAvailableUsers() {
+        List<User> users = userDAO.getAllMembers();
+        availableUsers = FXCollections.observableArrayList(users);
+        cbUsers.setItems(availableUsers);
     }
 
     @FXML
     private void handleIssueBook() {
-        String memberIdStr = txtMemberId.getText().trim();
+        Book selectedBook = cbBooks.getSelectionModel().getSelectedItem();
+        User selectedUser = cbUsers.getSelectionModel().getSelectedItem();
         
-        if (memberIdStr.isEmpty()) {
-            lblError.setText("Member ID is required");
+        if (selectedBook == null) {
+            lblError.setText("Please select a book");
+            return;
+        }
+        
+        if (selectedUser == null) {
+            lblError.setText("Please select a user");
             return;
         }
 
-        try {
-            int memberId = Integer.parseInt(memberIdStr);
-            User member = userDAO.getUserById(memberId);
-            
-            if (member == null || !member.isMember()) {
-                lblError.setText("Invalid member ID");
-                return;
-            }
+        BorrowRecord record = new BorrowRecord();
+        record.setBookId(selectedBook.getBookId());
+        record.setUserId(selectedUser.getUserId());
 
-            // Create and configure the borrow record
-            BorrowRecord record = new BorrowRecord();
-            record.setBookId(currentBook.getBookId());
-            record.setUserId(memberId);
-
-            BorrowRecordDAO borrowRecordDAO = new BorrowRecordDAO();
-            String result = borrowRecordDAO.issueBook(record);
-            
-            if (result.startsWith("Success")) {
-                if (onSuccess != null) onSuccess.run();
-                closeWindow();
-            } else {
-                String errorMessage = result.replace("Error: ", "");
-                lblError.setText(errorMessage);
-            }
-        } catch (NumberFormatException e) {
-            lblError.setText("Member ID must be a number");
+        String result = borrowRecordDAO.issueBook(record);
+        
+        if (result.startsWith("Success")) {
+            if (onSuccess != null) onSuccess.run();
+            closeWindow();
+        } else {
+            String errorMessage = result.replace("Error: ", "");
+            lblError.setText(errorMessage);
         }
     }
 
