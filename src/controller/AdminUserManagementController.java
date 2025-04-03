@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import javafx.scene.layout.Pane;
 
 public class AdminUserManagementController {
 
@@ -43,6 +44,11 @@ public class AdminUserManagementController {
     private final UserDAO userDAO = new UserDAO();
     private ObservableList<User> allUsers;
     private User currentUser;
+    private Pane pagingPane;
+    
+    public void setPagingPane(Pane pagingPane) {
+        this.pagingPane = pagingPane;
+    }
 
     public void setUser(User user) {
         this.currentUser = user;

@@ -80,6 +80,11 @@ public class AdminUpdateBookController {
             if (onBookUpdated != null) {
                 onBookUpdated.run();
             }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Book Update Successful");
+            alert.setHeaderText(null);
+            alert.setContentText("Book updated successfully!");
+            alert.showAndWait();
             closeWindow();
         } else {
             new Alert(Alert.AlertType.ERROR, "Failed to update book.").showAndWait();

@@ -12,7 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import util.Navigation;
 
-public class AdminUpdateUserController {
+public class MemberSelfUpdateController {
 
     @FXML private TextField txtFirstName, txtLastName, txtEmail, txtUsername, txtPhone;
     @FXML private PasswordField txtPassword;
@@ -38,13 +38,6 @@ public class AdminUpdateUserController {
     private Label lblUpdate;
 
     public void initialize() {
-        comboUserType.setItems(FXCollections.observableArrayList("ADMIN", "LIBRARIAN", "MEMBER"));
-        comboMemberType.setItems(FXCollections.observableArrayList("STUDENT", "FACULTY"));
-
-        comboUserType.setOnAction(e -> {
-            String selected = comboUserType.getSelectionModel().getSelectedItem();
-            comboMemberType.setDisable(!"MEMBER".equals(selected));
-        });
     }
 
     public void setUser(User user) {
@@ -57,12 +50,7 @@ public class AdminUpdateUserController {
         txtPassword.setText(user.getPassword());
         txtPhone.setText(user.getPhone());
 
-        comboUserType.setValue(user.getUserType());
-        comboMemberType.setDisable(!"MEMBER".equals(user.getUserType()));
-        if ("MEMBER".equals(user.getUserType())) {
-            comboMemberType.setValue(user.getMemberType());
         }
-    }
 
     public void setOnUserUpdated(Runnable onUserUpdated) {
         this.onUserUpdated = onUserUpdated;
@@ -80,8 +68,9 @@ public class AdminUpdateUserController {
         updatedUser.setUsername(txtUsername.getText().trim());
         updatedUser.setPassword(txtPassword.getText());
         updatedUser.setPhone(txtPhone.getText().trim());
-        updatedUser.setUserType(comboUserType.getValue());
-        updatedUser.setMemberType("MEMBER".equals(comboUserType.getValue()) ? comboMemberType.getValue() : null);
+        updatedUser.setUserType(currentUser.getUserType());
+        updatedUser.setMemberType(currentUser.getMemberType());
+
 
         UserDAO userDAO = new UserDAO();
         boolean success = userDAO.updateUser(updatedUser);
@@ -89,10 +78,11 @@ public class AdminUpdateUserController {
         if (success) {
             if (onUserUpdated != null) onUserUpdated.run();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("User Update Successful");
+            alert.setTitle("Update Successful");
             alert.setHeaderText(null);
-            alert.setContentText("User Updated successfully!");
+            alert.setContentText("User profile updated successfully!");
             alert.showAndWait();
+
             closePopup();
         } else {
             lblUsernameAlert.setText("Failed to update user. Try again.");
@@ -108,7 +98,6 @@ public class AdminUpdateUserController {
         lblUsernameAlert.setText("");
         lblPasswordAlert.setText("");
         lblPhoneAlert.setText("");
-        lblMemberTypeAlert.setText("");
 
         if (txtFirstName.getText().isEmpty()) {
             lblFirstNameAlert.setText("First name required");
@@ -134,11 +123,6 @@ public class AdminUpdateUserController {
             lblPhoneAlert.setText("Phone required");
             isValid = false;
         }
-        if ("MEMBER".equals(comboUserType.getValue()) && comboMemberType.getValue() == null) {
-            lblMemberTypeAlert.setText("Select member type");
-            isValid = false;
-        }
-
         return isValid;
     }
 

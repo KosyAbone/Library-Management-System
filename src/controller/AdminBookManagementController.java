@@ -48,6 +48,11 @@ public class AdminBookManagementController {
     private ObservableList<Book> allBooks;
 
     private User currentUser;
+    private Pane pagingPane;
+    
+    public void setPagingPane(Pane pagingPane) {
+        this.pagingPane = pagingPane;
+    }
 
     public void setUser(User user) {
         this.currentUser = user;
