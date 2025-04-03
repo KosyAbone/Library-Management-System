@@ -13,8 +13,13 @@
       fx:controller="controller.LibrarianDashboardController" stylesheets="@../assets/styles.css">
    
    <children>
+      <Label layoutX="35.0" layoutY="40.0" text="Librarian Dashboard" style="-fx-font-weight: bold; -fx-font-size: 25;">
+         <font>
+            <Font name="System Bold" size="50.0" />
+         </font>
+      </Label>
       <!-- Main Content Container -->
-      <VBox layoutX="50.0" layoutY="50.0" spacing="50.0">
+      <VBox layoutX="300.0" layoutY="150.0" spacing="65.0">
          <!-- Book Management Card -->
          <Pane prefHeight="150.0" prefWidth="900.0" 
                style="-fx-background-color: white; -fx-background-radius: 12;">

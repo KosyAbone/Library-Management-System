@@ -29,11 +29,14 @@
             <TableView fx:id="userTableView" layoutX="18.0" layoutY="50.0" prefHeight="725.0" prefWidth="1451.0">
                <columns>
                   <TableColumn fx:id="colID" prefWidth="150.0" text="Member ID" />
-                  <TableColumn fx:id="colName" prefWidth="300.0" text="Name" />
+                  <TableColumn fx:id="colName" prefWidth="300.0" text="Full Name" />
                   <TableColumn fx:id="colEmail" prefWidth="350.0" text="Email" />
                   <TableColumn fx:id="colUsername" prefWidth="200.0" text="Username" />
                   <TableColumn fx:id="colMemberType" prefWidth="200.0" text="Member Type" />
-                  <TableColumn fx:id="colActions" prefWidth="300.0" text="Actions" />
+                  <TableColumn fx:id="colActions" prefWidth="300.0" text="Actions" >
+                      <cellValueFactory>
+                      </cellValueFactory>
+                  </TableColumn>
                </columns>
             </TableView>
          </children>

@@ -127,7 +127,6 @@ public class LibrarianOverdueBooksController {
             fineAmountMap.clear();
 
             overdueRecords.forEach(record -> {
-                System.out.println("Processing record: " + record.getBookTitle());
 
                 List<Fine> fines = fineDAO.getFinesByBorrowId(record.getBorrowId());
                 if (!fines.isEmpty()) {
