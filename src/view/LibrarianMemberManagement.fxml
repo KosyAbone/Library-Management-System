@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LibrarianMemberManagementController">
+   <children>
+      <Pane fx:id="homePane" layoutX="728.0" layoutY="25.0" prefHeight="44.0" prefWidth="44.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/dashboardIconBlack.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Button blendMode="OVERLAY" layoutX="728.0" layoutY="25.0" onAction="#btnHomeOnAction" prefHeight="44.0" prefWidth="44.0" style="-fx-background-radius: 10;" text=" " />
+      <Label layoutX="27.0" layoutY="32.0" text="Member Management">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Pane layoutX="21.0" layoutY="93.0" prefHeight="799.0" prefWidth="1492.0" style="-fx-background-color: white; -fx-background-radius: 12px;">
+         <children>
+            <Line endX="1349.0" layoutX="121.0" layoutY="40.0" startX="-100.0" />
+            <TableView fx:id="userTableView" layoutX="18.0" layoutY="50.0" prefHeight="725.0" prefWidth="1451.0">
+               <columns>
+                  <TableColumn fx:id="colID" prefWidth="150.0" text="Member ID" />
+                  <TableColumn fx:id="colName" prefWidth="300.0" text="Name" />
+                  <TableColumn fx:id="colEmail" prefWidth="350.0" text="Email" />
+                  <TableColumn fx:id="colUsername" prefWidth="200.0" text="Username" />
+                  <TableColumn fx:id="colMemberType" prefWidth="200.0" text="Member Type" />
+                  <TableColumn fx:id="colActions" prefWidth="300.0" text="Actions" />
+               </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <Pane fx:id="searchPane" layoutX="1290.0" layoutY="24.0" prefHeight="46.0" prefWidth="100.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+         <children>
+            <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="13.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/searchIcon.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txtSearch" layoutX="47.0" layoutY="1.0" onAction="#handleSearch" prefHeight="44.0" prefWidth="151.0" promptText="Search members..." style="-fx-background-color: white; -fx-background-radius: 0 12 12 0;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+         </children>
+      </Pane>
+      <Pane fx:id="addMemberPane" layoutX="1144.0" layoutY="24.0" prefHeight="46.0" prefWidth="136.0" style="-fx-background-color: black; -fx-background-radius: 12;">
+         <children>
+            <Label layoutX="42.0" layoutY="12.0" text="Add Member" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/addIconWhite.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Button blendMode="OVERLAY" layoutX="1144.0" layoutY="24.0" onAction="#btnAddMemberOnAction" prefHeight="46.0" prefWidth="136.0" style="-fx-background-radius: 12;" text=" " />
+      <Pane fx:id="logoutPane" layoutX="1500.0" layoutY="800.0" prefHeight="44.0" prefWidth="44.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/logOutIconBlack.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Button blendMode="OVERLAY" layoutX="1500.0" layoutY="800.0" onAction="#btnLogOutAction" prefHeight="44.0" prefWidth="44.0" style="-fx-background-radius: 10;" text=" " />
+   </children>
+</Pane>

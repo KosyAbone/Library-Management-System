@@ -66,6 +66,10 @@ public class FineDAO {
             return null;
         }
     }
+    
+    public List<Fine> getFinesByBorrowId(int borrowId) {
+        return getFines("SELECT * FROM fines WHERE borrow_id=?", borrowId);
+    }
 
     // ========== LIST METHODS ==========
     public List<Fine> getAllFines() {

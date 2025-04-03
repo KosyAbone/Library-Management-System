@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controller.LibrarianIssueBookPopupController" spacing="10" alignment="CENTER" padding="20">
+    <Label text="Issue Book" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    <TextField fx:id="txtMemberId" promptText="Member ID"/>
+    <TextField fx:id="txtBookId" promptText="Book ID"/>
+    <DatePicker fx:id="datePickerDue" promptText="Select Due Date"/>
+    <Button text="Issue Book" onAction="#handleIssueBook"/>
+</VBox>
