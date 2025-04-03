@@ -35,8 +35,12 @@ public class MemberBorrowController {
     private final BookDAO bookDAO = new BookDAO();
     private User currentUser;
     private Book selectedBook;
-
-
+    private Pane pagingPane;
+    
+    public void setPagingPane(Pane pagingPane) {
+        this.pagingPane = pagingPane;
+    }
+    
     public void setUser(User user) {
         this.currentUser = user;
         
@@ -149,24 +153,6 @@ public class MemberBorrowController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
-    }
-    
-    @FXML
-    private void btnHomeOnAction(ActionEvent event) {
-        try {
-            Navigation.switchNavigation("MemberDashboard.fxml", event);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    @FXML
-    private void btnLogOutAction(ActionEvent event) {
-        try {
-            Navigation.switchNavigation("Login.fxml", event);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
     
 }

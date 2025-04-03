@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
+import javafx.scene.layout.Pane;
 
 public class MemberReturnedBooksController {
 
@@ -32,6 +33,11 @@ public class MemberReturnedBooksController {
 
     private final BorrowRecordDAO borrowRecordDAO = new BorrowRecordDAO();
     private User currentUser;
+    private Pane pagingPane;
+    
+    public void setPagingPane(Pane pagingPane) {
+        this.pagingPane = pagingPane;
+    }
 
     public void setUser(User user) {
         this.currentUser = user;
@@ -81,10 +87,15 @@ public class MemberReturnedBooksController {
 
     @FXML
     private void btnBorrowedBooksOnAction(ActionEvent event) throws IOException {
-            Navigation.switchNavigation("MemberBorrowedBooks.fxml", event); {
-            
+            try {
+            Navigation.switchPaging(pagingPane, "MemberBorrowedBooks.fxml", (MemberBorrowedBooksController controller) -> {
+                controller.setUser(currentUser);
+                controller.setPagingPane(pagingPane);
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-}
+    }
 
     private void showAlert(String msg) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

@@ -37,6 +37,11 @@ public class MemberBorrowedBooksController {
     private final BorrowRecordDAO borrowRecordDAO = new BorrowRecordDAO();
     private final BookDAO bookDAO = new BookDAO();
     private User currentUser;
+    private Pane pagingPane;
+    
+    public void setPagingPane(Pane pagingPane) {
+        this.pagingPane = pagingPane;
+    }
 
     public void setUser(User user) {
         this.currentUser = user;
@@ -80,8 +85,15 @@ public class MemberBorrowedBooksController {
 
     @FXML
     private void btnReturnedBooksOnAction(ActionEvent event) throws IOException {
-        Navigation.switchNavigation("MemberReturnedBooks.fxml", event); {
+        try {
+            Navigation.switchPaging(pagingPane, "MemberReturnedBooks.fxml", (MemberReturnedBooksController controller) -> {
+                controller.setUser(currentUser);
+                controller.setPagingPane(pagingPane);
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
     }
 
 
@@ -150,23 +162,5 @@ public class MemberBorrowedBooksController {
         alert.setTitle("Error");
         alert.setContentText(msg);
         alert.showAndWait();
-    }
-    
-    @FXML
-    private void btnHomeOnAction(ActionEvent event) {
-        try {
-            Navigation.switchNavigation("MemberDashboard.fxml", event);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    @FXML
-    private void btnLogOutAction(ActionEvent event) {
-        try {
-            Navigation.switchNavigation("Login.fxml", event);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

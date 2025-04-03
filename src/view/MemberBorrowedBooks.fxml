@@ -14,16 +14,6 @@
 
 <Pane prefHeight="905.0" prefWidth="1655.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MemberBorrowedBooksController">
    <children>
-       <Pane fx:id="homePane" layoutX="728.0" layoutY="25.0" prefHeight="44.0" prefWidth="44.0" style="-fx-background-color: white; -fx-background-radius: 10;">
-           <children>
-               <ImageView fx:id="imgHome" fitHeight="24.0" fitWidth="24.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                   <image>
-                       <Image url="@../assets/dashboardIconBlack.png" />
-                   </image>
-               </ImageView>
-           </children>
-       </Pane>
-       <Button blendMode="OVERLAY" layoutX="728.0" layoutY="25.0" onAction="#btnHomeOnAction" prefHeight="44.0" prefWidth="44.0" style="-fx-background-radius: 10;" text=" " />
       <Pane layoutX="24.0" layoutY="28.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-color: #E3E3E3; -fx-background-radius: 12 0 0 12;">
          <children>
             <Label layoutX="59.0" layoutY="9.0" text="Borrowed Books">
@@ -87,16 +77,6 @@
             </Text>
          </children>
       </Pane>
-       <Pane fx:id="logoutPane" layoutX="1570.0" layoutY="825.0" prefHeight="44.0" prefWidth="44.0" style="-fx-background-color: white; -fx-background-radius: 10;">
-           <children>
-               <ImageView fx:id="imglogout" fitHeight="24.0" fitWidth="24.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                   <image>
-                       <Image url="@../assets/logOutIconBlack.png" />
-                   </image>
-               </ImageView>
-           </children>
-       </Pane>
-       <Button blendMode="OVERLAY" layoutX="1570.0" layoutY="825.0" onAction="#btnLogOutAction" prefHeight="44.0" prefWidth="44.0" style="-fx-background-radius: 10;" text=" " />
 
       <!-- Alert -->
       <Label fx:id="lblSearchAlert" layoutX="1356.0" layoutY="71.0" textFill="RED">

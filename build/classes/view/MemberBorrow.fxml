@@ -15,17 +15,6 @@
 
 <Pane prefHeight="905.0" prefWidth="1655.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MemberBorrowController">
    <children>
-       <Pane fx:id="homePane" layoutX="728.0" layoutY="25.0" prefHeight="44.0" prefWidth="44.0" style="-fx-background-color: white; -fx-background-radius: 10;">
-           <children>
-               <ImageView fx:id="imgHome" fitHeight="24.0" fitWidth="24.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                   <image>
-                       <Image url="@../assets/dashboardIconBlack.png" />
-                   </image>
-               </ImageView>
-           </children>
-       </Pane>
-       <Button blendMode="OVERLAY" layoutX="728.0" layoutY="25.0" onAction="#btnHomeOnAction" prefHeight="44.0" prefWidth="44.0" style="-fx-background-radius: 10;" text=" " />
-      <Button layoutX="-71.0" text=" " />
       <Pane layoutX="1534.0" layoutY="93.0" prefHeight="812.5" prefWidth="121.0" style="-fx-background-color: black; -fx-background-radius: 12 0 0 0;">
          <children>
             <Text fill="WHITE" layoutX="-132.0" layoutY="412.0" rotate="-90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIBRARY MANAGEMENT SYSTEM" textAlignment="CENTER" wrappingWidth="384.4582549769573">
@@ -101,16 +90,6 @@
             <Font size="16.0" />
          </font>
       </Button>
-      <Pane fx:id="logoutPane" layoutX="1570.0" layoutY="825.0" prefHeight="44.0" prefWidth="44.0" style="-fx-background-color: white; -fx-background-radius: 10;">
-           <children>
-               <ImageView fx:id="imglogout" fitHeight="24.0" fitWidth="24.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                   <image>
-                       <Image url="@../assets/logOutIconBlack.png" />
-                   </image>
-               </ImageView>
-           </children>
-       </Pane>
-       <Button blendMode="OVERLAY" layoutX="1570.0" layoutY="825.0" onAction="#btnLogOutAction" prefHeight="44.0" prefWidth="44.0" style="-fx-background-radius: 10;" text=" " />
       <Label fx:id="lblSearchAlert" layoutX="1306.0" layoutY="72.0" textFill="RED">
          <font>
             <Font size="11.0" />

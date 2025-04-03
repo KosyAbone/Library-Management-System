@@ -3,38 +3,61 @@ package controller;
 import Model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.layout.Pane;
 import util.Navigation;
+
 import java.io.IOException;
 
 public class MemberDashboardController {
 
     private User currentUser;
+    private Pane pagingPane;
 
     public void setUser(User user) {
         this.currentUser = user;
     }
 
-    @FXML
-    private void btnBorrowedBookOnAction(ActionEvent event) throws IOException {
-            Navigation.switchNavigation("MemberBorrowedBooks.fxml", event, (MemberBorrowedBooksController controller) -> {
-        controller.setUser(currentUser);
-            });
+    public void setPagingPane(Pane pagingPane) {
+        this.pagingPane = pagingPane;
     }
 
     @FXML
-    private void btnReturnedBookOnAction(ActionEvent event) throws IOException {
-            Navigation.switchNavigation("MemberReturnedBooks.fxml", event, (MemberReturnedBooksController controller) -> {
-        controller.setUser(currentUser);
+    private void btnBorrowedBookOnAction(ActionEvent event) {
+        try {
+            Navigation.switchPaging(pagingPane, "MemberBorrowedBooks.fxml", (MemberBorrowedBooksController controller) -> {
+                controller.setUser(currentUser);
+                controller.setPagingPane(pagingPane);
             });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
-    private void btnAvailableBookOnAction(ActionEvent event) throws IOException {
-            Navigation.switchNavigation("MemberBorrow.fxml", event, (MemberBorrowController controller) -> {
-                    controller.setUser(currentUser);
-        });
+    private void btnReturnedBookOnAction(ActionEvent event) {
+        try {
+            Navigation.switchPaging(pagingPane, "MemberReturnedBooks.fxml", (MemberReturnedBooksController controller) -> {
+                controller.setUser(currentUser);
+                controller.setPagingPane(pagingPane);
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-    
+
+    @FXML
+    private void btnAvailableBookOnAction(ActionEvent event) {
+        try {
+            Navigation.switchPaging(pagingPane, "MemberBorrow.fxml", (MemberBorrowController controller) -> {
+                controller.setUser(currentUser);
+                controller.setPagingPane(pagingPane);
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
+
     @FXML
     private void btnLogOutAction(ActionEvent event) {
         try {

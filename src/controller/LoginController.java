@@ -63,8 +63,9 @@ public class LoginController {
             });
             
             } else if (user.isMember()) {
-                Navigation.switchNavigation("MemberDashboard.fxml", event, (MemberDashboardController controller) -> {
+                Navigation.switchNavigation("MemberNavi.fxml", event, (MemberNaviController controller) -> {
                     controller.setUser(user);
+                    controller.loadDashboard();
         });
                 
             } else if (user.isLibrarian()) {
