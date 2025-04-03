@@ -9,6 +9,8 @@ import util.Navigation;
 import util.DateTime;
 
 import java.io.IOException;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 public class MemberNaviController {
 
@@ -88,11 +90,29 @@ public class MemberNaviController {
 
     @FXML
     private void btnSettingsOnAction(ActionEvent event) {
-        // Optional - show a settings popup if needed
+       try {
+            Navigation.openPopup("MemberSelfUpdate.fxml", (MemberSelfUpdateController controller) -> {
+                controller.setUser(currentUser);
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void btnLogOutOnAction(ActionEvent event) {
-        Navigation.exit();
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("Confirm Logout");
+    alert.setHeaderText("Are you sure you want to sign out?");
+
+    ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
+
+    if (result == ButtonType.OK) {
+        try {
+            Navigation.switchNavigation("Login.fxml", event);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     }
 }

@@ -14,6 +14,7 @@ import util.Navigation;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
+import javafx.scene.layout.Pane;
 
 public class AdminBorrowedController {
 
@@ -28,6 +29,11 @@ public class AdminBorrowedController {
 
     private final BorrowRecordDAO borrowRecordDAO = new BorrowRecordDAO();
      private User currentUser;
+     private Pane pagingPane;
+    
+    public void setPagingPane(Pane pagingPane) {
+        this.pagingPane = pagingPane;
+    }
 
     public void setUser(User user) {
         this.currentUser = user;
@@ -82,6 +88,20 @@ public class AdminBorrowedController {
 
     @FXML
     private void btnOverdueBorrowersOnAction(ActionEvent event) throws IOException {
-            Navigation.switchNavigation("AdminOverdue.fxml", event);
+        System.out.println("Clicked Borrowed Books");
+        
+        if (pagingPane == null) {
+        System.out.println("pagingPane is NULL! Did you forget setPagingPane()?");
+        return;
+    }
+
+           try {
+            Navigation.switchPaging(pagingPane, "AdminOverdue.fxml", (AdminOverdueController controller) -> {
+                controller.setUser(currentUser);
+                controller.setPagingPane(pagingPane);
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

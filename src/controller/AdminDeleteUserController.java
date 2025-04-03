@@ -3,6 +3,7 @@ package controller;
 import DAO.UserDAO;
 import Model.User;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -37,6 +38,11 @@ public class AdminDeleteUserController {
             if (onUserDeleted != null) {
                 onUserDeleted.run();
             }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+               alert.setTitle("Delete Successful");
+                alert.setHeaderText(null);
+                alert.setContentText("Book Deleted!");
+                alert.showAndWait();
             closePopup();
         } else {
             txtConfirmation.setText("Failed to delete user. Please try again.");

@@ -77,6 +77,11 @@ public class AdminAddUserController {
             if (onUserAdded != null) {
                 onUserAdded.run();
             }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Add Successful");
+                alert.setHeaderText(null);
+                alert.setContentText("User profile added successfully!");
+                alert.showAndWait();
             closePopup();
         } else {
             lblUsernameAlert.setText("Failed to add user. Try another username.");

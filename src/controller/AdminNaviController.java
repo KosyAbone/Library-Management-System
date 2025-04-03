@@ -2,6 +2,8 @@ package controller;
 
 import Model.User;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.Pane;
@@ -18,6 +20,10 @@ public class AdminNaviController {
     @FXML private Pane pagingPane;
 
     private User currentUser;
+    
+    public void setPagingPane(Pane pagingPane) {
+        this.pagingPane = pagingPane;
+    }
 
     public void setUser(User user) {
         this.currentUser = user;
@@ -28,13 +34,14 @@ public class AdminNaviController {
 
     @FXML
     private void initialize() {
-        // Time/date will be injected after setUser() is called
+       
     }
     
     public void loadDashboard() {
     try {
         Navigation.switchPaging(pagingPane, "AdminDashboard.fxml", (AdminDashboardController controller) -> {
             controller.setUser(currentUser);
+            controller.setPagingPane(pagingPane);
         });
     } catch (IOException e) {
         e.printStackTrace();
@@ -47,6 +54,7 @@ public class AdminNaviController {
         try {
             Navigation.switchPaging(pagingPane, "AdminDashboard.fxml", (AdminDashboardController controller) -> {
                 controller.setUser(currentUser);
+                controller.setPagingPane(pagingPane);
             });
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,6 +66,7 @@ public class AdminNaviController {
         try {
             Navigation.switchPaging(pagingPane, "AdminBorrowed.fxml", (AdminBorrowedController controller) -> {
                 controller.setUser(currentUser);
+                controller.setPagingPane(pagingPane);
             });
         } catch (IOException e) {
             e.printStackTrace();
@@ -69,6 +78,7 @@ public class AdminNaviController {
         try {
             Navigation.switchPaging(pagingPane, "AdminBookManagement.fxml", (AdminBookManagementController controller) -> {
                 controller.setUser(currentUser);
+                controller.setPagingPane(pagingPane);
             });
         } catch (IOException e) {
             e.printStackTrace();
@@ -80,6 +90,7 @@ public class AdminNaviController {
         try {
             Navigation.switchPaging(pagingPane, "AdminUserManagement.fxml", (AdminUserManagementController controller) -> {
                 controller.setUser(currentUser);
+                controller.setPagingPane(pagingPane);
             });
         } catch (IOException e) {
             e.printStackTrace();
@@ -93,11 +104,31 @@ public class AdminNaviController {
 
     @FXML
     private void btnSettingsOnAction(ActionEvent event) {
-        // Optional - show a settings popup if needed
+        try {
+            Navigation.openPopup("MemberSelfUpdate.fxml", (MemberSelfUpdateController controller) -> {
+                controller.setUser(currentUser);
+                
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void btnLogOutOnAction(ActionEvent event) {
-        Navigation.exit();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirm Logout");
+        alert.setHeaderText("Are you sure you want to sign out?");
+        alert.setContentText("Click OK to logout or Cancel to stay.");
+
+        ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
+
+        if (result == ButtonType.OK) {
+            try {
+                Navigation.switchNavigation("Login.fxml", event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

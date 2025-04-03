@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -53,7 +52,6 @@
                 <Label layoutX="147.0" layoutY="82.0" text="Total User Base">
                     <font><Font size="16.0" /></font>
                 </Label>
-            <Button blendMode="OVERLAY" layoutX="-9.0" layoutY="-1.0" mnemonicParsing="false" onAction="#btnUserOnAction" prefHeight="123.0" prefWidth="376.0" />
             </children>
         </Pane>
 
@@ -73,7 +71,6 @@
                 <Label layoutX="147.0" layoutY="82.0" text="Total Book Count">
                     <font><Font size="16.0" /></font>
                 </Label>
-            <Button blendMode="OVERLAY" layoutX="-10.0" layoutY="-1.0" mnemonicParsing="false" onAction="#btnBookOnAction" prefHeight="123.0" prefWidth="376.0" />
             </children>
         </Pane>
 
@@ -93,7 +90,6 @@
                 <Label layoutX="147.0" layoutY="82.0" text="Total Librarians">
                     <font><Font size="16.0" /></font>
                 </Label>
-            <Button blendMode="OVERLAY" layoutX="-8.0" layoutY="-1.0" mnemonicParsing="false" onAction="#btnLibrarianOnAction" prefHeight="123.0" prefWidth="376.0" />
             </children>
         </Pane>
 

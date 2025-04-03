@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import java.util.function.Consumer;
+import javafx.scene.control.Alert;
 
 public class AdminDeleteBookController {
 
@@ -51,6 +52,11 @@ public class AdminDeleteBookController {
                 }
             }
         }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+               alert.setTitle("Delete Successful");
+                alert.setHeaderText(null);
+                alert.setContentText("Book Deleted!");
+                alert.showAndWait();
         closeWindow();
     }
 

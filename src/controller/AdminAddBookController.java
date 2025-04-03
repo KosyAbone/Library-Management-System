@@ -78,6 +78,11 @@ public class AdminAddBookController {
             if (onBookAdded != null) {
                 onBookAdded.run();
             }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Add Book Successful");
+            alert.setHeaderText(null);
+            alert.setContentText("Book added successfully!");
+            alert.showAndWait();
             closeStage();
         } else {
             lblisbnAlert.setText("Failed to add book (maybe ISBN exists)");

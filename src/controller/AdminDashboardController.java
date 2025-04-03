@@ -21,11 +21,17 @@ import javafx.beans.property.SimpleStringProperty;
 
 import java.util.List;
 import javafx.event.ActionEvent;
+import javafx.scene.layout.Pane;
 import util.Navigation;
 
 public class AdminDashboardController {
     
     private User currentUser;
+    private Pane pagingPane;
+    
+    public void setPagingPane(Pane pagingPane) {
+        this.pagingPane = pagingPane;
+    }
 
     public void setUser(User user) {
         this.currentUser = user;
