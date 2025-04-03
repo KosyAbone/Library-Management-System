@@ -1,0 +1,11 @@
+/* Add hover effect to cards */
+.pane:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.5, 0, 0);
+    -fx-cursor: hand;
+}
+
+/* Style for logout button */
+#logoutButton:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.5, 0, 0);
+    -fx-cursor: hand;
+}

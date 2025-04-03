@@ -69,7 +69,7 @@ public class LoginController {
         });
                 
             } else if (user.isLibrarian()) {
-                Navigation.switchNavigation("LibrarianDashboard.fxml", event, (MemberDashboardController controller) -> {
+                Navigation.switchNavigation("LibrarianDashboard.fxml", event, (LibrarianDashboardController controller) -> {
                     controller.setUser(user);
             });
                 

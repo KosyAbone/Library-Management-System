@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LibrarianBookManagementController">
+   <children>
+      <!-- Header Section -->
+      <Pane fx:id="homePane" layoutX="728.0" layoutY="25.0" prefHeight="44.0" prefWidth="44.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/dashboardIconBlack.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Button blendMode="OVERLAY" layoutX="728.0" layoutY="25.0" onAction="#btnHomeOnAction" prefHeight="44.0" prefWidth="44.0" style="-fx-background-radius: 10;" text=" " />
+      
+      <Label layoutX="27.0" layoutY="32.0" text="Book Management">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      
+      <!-- Main Content Area -->
+      <Pane layoutX="21.0" layoutY="93.0" prefHeight="799.0" prefWidth="1492.0" style="-fx-background-color: white; -fx-background-radius: 12px;">
+         <children>
+            <Line endX="1349.0" layoutX="121.0" layoutY="40.0" startX="-100.0" stroke="#E0E0E0" />
+            
+            <!-- Books Table with Quantity Tracking -->
+            <TableView fx:id="booksTable" layoutX="18.0" layoutY="50.0" prefHeight="725.0" prefWidth="1451.0">
+               <columns>
+                  <TableColumn fx:id="colIsbn" prefWidth="120.0" text="ISBN" />
+                  <TableColumn fx:id="colTitle" prefWidth="300.0" text="Book Title" />
+                  <TableColumn fx:id="colAuthor" prefWidth="200.0" text="Author" />
+                  <TableColumn fx:id="colTotalQty" prefWidth="100.0" text="Total" />
+                  <TableColumn fx:id="colAvailableQty" prefWidth="100.0" text="Available" />
+                  <TableColumn fx:id="colStatus" prefWidth="150.0" text="Status" />
+                  <TableColumn fx:id="colAction" prefWidth="150.0" text="Action" />
+               </columns>
+            </TableView>
+         </children>
+      </Pane>
+      
+      <!-- Search Section-->
+      <Pane fx:id="searchPane" layoutX="1215.0" layoutY="24.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+         <children>
+            <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="13.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/searchIcon.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txtSearch" layoutX="47.0" layoutY="1.0" onAction="#handleSearch" 
+                       prefHeight="44.0" prefWidth="251.0" promptText="Search books..." 
+                       style="-fx-background-color: white; -fx-background-radius: 0 12 12 0;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+         </children>
+      </Pane>
+      
+      <!-- Logout Button -->
+      <Pane fx:id="logoutPane" layoutX="1500.0" layoutY="800.0" prefHeight="44.0" prefWidth="44.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/logOutIconBlack.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Button blendMode="OVERLAY" layoutX="1500.0" layoutY="800.0" onAction="#btnLogOutAction" 
+              prefHeight="44.0" prefWidth="44.0" style="-fx-background-radius: 10;" text=" " />
+   </children>
+</Pane>

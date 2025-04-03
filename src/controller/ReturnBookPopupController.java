@@ -23,6 +23,7 @@ public class ReturnBookPopupController {
 
     private BorrowRecord borrowRecord;
     private Consumer<Void> onReturnSuccess;
+    private Book book;
 
     private final BorrowRecordDAO borrowRecordDAO = new BorrowRecordDAO();
     private final BookDAO bookDAO = new BookDAO();
@@ -36,6 +37,10 @@ public class ReturnBookPopupController {
         this.onReturnSuccess = callback;
     }
 
+    void setBook(Book book) {
+        this.book = book;
+    }
+    
     @FXML
     public void initialize() {
         colIsbn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getBookTitle()));  // or .getIsbn() if added
@@ -84,4 +89,6 @@ public class ReturnBookPopupController {
         alert.setContentText(msg);
         alert.showAndWait();
     }
+
+    
 }
