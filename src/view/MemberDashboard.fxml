@@ -8,11 +8,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="905.0" prefWidth="1655.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/17.0.14" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MemberDashboardController">
+<Pane prefHeight="855.0" prefWidth="1350.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/17.0.14" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MemberDashboardController">
    <children>
-      <Pane fx:id="borrowedBookPane" layoutX="52.0" layoutY="52.0" prefHeight="204.0" prefWidth="908.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+      <Pane fx:id="borrowedBookPane" layoutX="52.0" layoutY="52.0" prefHeight="163.0" prefWidth="750.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
-            <Pane layoutX="54.0" layoutY="35.0" prefHeight="135.0" prefWidth="122.0" style="-fx-background-color: #D7D7D7; -fx-background-radius: 12;">
+            <Pane layoutX="48.0" layoutY="13.0" prefHeight="135.0" prefWidth="122.0" style="-fx-background-color: #D7D7D7; -fx-background-radius: 12;">
                <children>
                   <ImageView fitHeight="91.0" fitWidth="91.0" layoutX="16.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -21,31 +21,26 @@
                   </ImageView>
                </children>
             </Pane>
-            <Text layoutX="230.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click here to view your Borrowed Book List" wrappingWidth="620.5271606445312">
-               <font>
-                  <Font size="50.0" />
-               </font>
-            </Text>
-            <Line endX="3.136810302734375" endY="109.91000366210938" layoutX="24.0" layoutY="73.0" startX="3.136810302734375" startY="-52.51482391357422" />
+            <Line endX="3.136810302734375" endY="81.0" layoutX="24.0" layoutY="68.0" startX="3.136810302734375" startY="-52.51482391357422" />
          </children>
       </Pane>
-      <Pane layoutX="1048.0" layoutY="45.0" prefHeight="426.0" prefWidth="515.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+      <Pane layoutX="1033.0" layoutY="38.0" prefHeight="298.0" prefWidth="317.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
-            <Text fx:id="textQuote" layoutX="20.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;The more that you read, the more things you will know. The more that you learn, the more places you’ll go.&quot;" wrappingWidth="478.5522766113281">
+            <Text fx:id="textQuote" layoutX="16.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;The more that you read, the more things you will know. The more that you learn, the more places you’ll go.&quot;" wrappingWidth="301.5522766113281">
                <font>
-                  <Font name="System Italic" size="41.0" />
+                  <Font name="System Italic" size="24.0" />
                </font>
             </Text>
-            <Text layoutX="350.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Dr. Seuss">
+            <Text layoutX="196.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Dr. Seuss">
                <font>
                   <Font size="24.0" />
                </font>
             </Text>
          </children>
       </Pane>
-      <Pane fx:id="availableBookPane" layoutX="52.0" layoutY="650.0" prefHeight="204.0" prefWidth="907.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+      <Pane fx:id="availableBookPane" layoutX="52.0" layoutY="522.0" prefHeight="163.0" prefWidth="750.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
-            <Pane layoutX="54.0" layoutY="36.0" prefHeight="135.0" prefWidth="122.0" style="-fx-background-color: #D7D7D7; -fx-background-radius: 12;">
+            <Pane layoutX="45.0" layoutY="16.0" prefHeight="135.0" prefWidth="122.0" style="-fx-background-color: #D7D7D7; -fx-background-radius: 12;">
                <children>
                   <ImageView fitHeight="91.0" fitWidth="91.0" layoutX="16.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -54,17 +49,17 @@
                   </ImageView>
                </children>
             </Pane>
-            <Text layoutX="230.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click here to browse available book inventory" wrappingWidth="562.789794921875">
+            <Text layoutX="230.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click here to browse available book inventory" wrappingWidth="562.789794921875">
                <font>
-                  <Font size="50.0" />
+                  <Font size="35.0" />
                </font>
             </Text>
-            <Line endX="3.136810302734375" endY="109.91000366210938" layoutX="24.0" layoutY="74.0" startX="3.136810302734375" startY="-52.51482391357422" />
+            <Line endX="3.136810302734375" endY="70.0" layoutX="24.0" layoutY="74.0" startX="3.136810302734375" startY="-52.51482391357422" />
          </children>
       </Pane>
-      <Pane fx:id="returnedBookPane" layoutX="52.0" layoutY="350.0" prefHeight="204.0" prefWidth="908.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+      <Pane fx:id="returnedBookPane" layoutX="52.0" layoutY="290.0" prefHeight="163.0" prefWidth="750.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
-            <Pane layoutX="54.0" layoutY="35.0" prefHeight="135.0" prefWidth="122.0" style="-fx-background-color: #D7D7D7; -fx-background-radius: 12;">
+            <Pane layoutX="48.0" layoutY="15.0" prefHeight="135.0" prefWidth="122.0" style="-fx-background-color: #D7D7D7; -fx-background-radius: 12;">
                <children>
                   <ImageView fitHeight="91.0" fitWidth="91.0" layoutX="16.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -73,19 +68,24 @@
                   </ImageView>
                </children>
             </Pane>
-            <Text layoutX="230.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click here to view your Returned Book List" wrappingWidth="524.7167663574219">
+            <Text layoutX="230.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click here to view your Returned Book List" wrappingWidth="524.7167663574219">
                <font>
-                  <Font size="50.0" />
+                  <Font size="35.0" />
                </font>
             </Text>
-            <Line endX="3.136810302734375" endY="109.91000366210938" layoutX="24.0" layoutY="73.0" startX="3.136810302734375" startY="-52.51482391357422" />
+            <Line endX="3.136810302734375" endY="71.0" layoutX="24.0" layoutY="73.0" startX="3.136810302734375" startY="-52.51482391357422" />
          </children>
       </Pane>
-      <Button blendMode="OVERLAY" layoutX="52.0" layoutY="52.0" onAction="#btnBorrowedBookOnAction" prefHeight="204.0" prefWidth="908.0" style="-fx-background-radius: 12;" text=" ">
+      <Button blendMode="OVERLAY" layoutX="52.0" layoutY="52.0" onAction="#btnBorrowedBookOnAction" prefHeight="163.0" prefWidth="750.0" style="-fx-background-radius: 12;" text=" ">
          </Button>
-      <Button blendMode="OVERLAY" layoutX="52.0" layoutY="350.0" onAction="#btnReturnedBookOnAction" prefHeight="204.0" prefWidth="908.0" style="-fx-background-radius: 12;" text=" ">
+      <Button blendMode="OVERLAY" layoutX="52.0" layoutY="289.0" onAction="#btnReturnedBookOnAction" prefHeight="163.0" prefWidth="750.0" style="-fx-background-radius: 12;" text=" ">
          </Button>
-      <Button blendMode="OVERLAY" layoutX="52.0" layoutY="650.0" onAction="#btnAvailableBookOnAction" prefHeight="204.0" prefWidth="908.0" style="-fx-background-radius: 12;" text=" ">
+      <Button blendMode="OVERLAY" layoutX="52.0" layoutY="522.0" onAction="#btnAvailableBookOnAction" prefHeight="163.0" prefWidth="750.0" style="-fx-background-radius: 12;" text=" ">
          </Button>
+      <Text layoutX="267.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click here to view your Borrowed Book List" wrappingWidth="479.52716064453125">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Text>
    </children>
 </Pane>
