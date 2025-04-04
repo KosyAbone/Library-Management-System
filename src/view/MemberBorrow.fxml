@@ -13,40 +13,39 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="905.0" prefWidth="1655.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/17.0.14" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MemberBorrowController">
+<Pane prefHeight="905.0" prefWidth="1390.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/17.0.14" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MemberBorrowController">
    <children>
-      <Pane layoutX="1534.0" layoutY="93.0" prefHeight="812.5" prefWidth="121.0" style="-fx-background-color: black; -fx-background-radius: 12 0 0 0;">
-         <children>
-            <Text fill="WHITE" layoutX="-132.0" layoutY="412.0" rotate="-90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIBRARY MANAGEMENT SYSTEM" textAlignment="CENTER" wrappingWidth="384.4582549769573">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-         </children>
-      </Pane>
       <Label layoutX="27.0" layoutY="32.0" text="Library Books">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Pane layoutX="21.0" layoutY="93.0" prefHeight="799.0" prefWidth="1492.0" style="-fx-background-color: white; -fx-background-radius: 12px;">
+      <Pane layoutX="21.0" layoutY="108.0" prefHeight="784.0" prefWidth="1369.0" style="-fx-background-color: white; -fx-background-radius: 12px;">
          <children>
-            <Line endX="1349.369140625" layoutX="121.0" layoutY="40.0" startX="-100.0" />
-            <HBox alignment="CENTER_LEFT" layoutX="62.0" layoutY="15.0" prefHeight="60.0" prefWidth="1409.0">
+            <Line endX="1099.0" layoutX="121.0" layoutY="40.0" startX="-100.0" />
+            <HBox alignment="CENTER_LEFT" layoutX="62.0" layoutY="15.0" prefHeight="60.0" prefWidth="1183.0">
             </HBox>
-            <Pane layoutX="1472.0" layoutY="73.0" prefHeight="722.0" prefWidth="17.0" style="-fx-background-color: white;" />
-              <TableView fx:id="booksTable" layoutX="18.0" layoutY="50.0" prefHeight="725.0" prefWidth="1451.0">
+              <TableView fx:id="booksTable" layoutX="18.0" layoutY="45.0" prefHeight="730.0" prefWidth="1228.0">
                   <columns>
                       <TableColumn fx:id="bookIdColumn" prefWidth="125.15163040161133" text="ISBN" />
-                      <TableColumn fx:id="bookTitle" prefWidth="648.5329437255859" text="Title" />
-                      <TableColumn fx:id="bookAuthorColumn" minWidth="0.0" prefWidth="335.967041015625" text="Author" />
-                      <TableColumn fx:id="bookStatusColumn" minWidth="0.0" prefWidth="240.209228515625" text="Availability" />
-                      <TableColumn fx:id="bookActionsColumn" prefWidth="99.790771484375" text="Actions" />
+                      <TableColumn fx:id="bookTitle" prefWidth="485.0" text="Title" />
+                      <TableColumn fx:id="bookAuthorColumn" minWidth="0.0" prefWidth="233.0" text="Author" />
+                      <TableColumn fx:id="bookStatusColumn" minWidth="0.0" prefWidth="196.5" text="Availability" />
+                      <TableColumn fx:id="bookActionsColumn" prefWidth="187.0" text="Actions" />
                   </columns>
               </TableView>
+            <Pane layoutX="1248.0" layoutY="38.0" prefHeight="753.0" prefWidth="117.0" style="-fx-background-color: black; -fx-background-radius: 12 0 0 0;">
+               <children>
+                  <Text fill="WHITE" layoutX="-132.0" layoutY="412.0" rotate="-90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIBRARY MANAGEMENT SYSTEM" textAlignment="CENTER" wrappingWidth="384.4582549769573">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
          </children>
       </Pane>
-      <Pane fx:id="BorrowBookPane" layoutX="1144.0" layoutY="24.0" prefHeight="44.0" prefWidth="136.0" style="-fx-background-color: black; -fx-background-radius: 12;">
+      <Pane fx:id="BorrowBookPane" layoutX="952.0" layoutY="40.0" prefHeight="44.0" prefWidth="136.0" style="-fx-background-color: black; -fx-background-radius: 12;">
          <children>
             <Label fx:id="lblBorrow" layoutX="52.0" layoutY="12.0" text="Borrow" textFill="WHITE">
                <font>
@@ -60,8 +59,8 @@
             </ImageView>
          </children>
       </Pane>
-      <Button blendMode="OVERLAY" layoutX="1144.0" layoutY="24.0" onAction="#btnBorrowBookOnAction" prefHeight="44.0" prefWidth="136.0" style="-fx-background-radius: 12;" text=" " />
-      <Pane fx:id="searchPane" layoutX="1290.0" layoutY="24.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+      <Button blendMode="OVERLAY" layoutX="952.0" layoutY="40.0" onAction="#btnBorrowBookOnAction" prefHeight="44.0" prefWidth="136.0" style="-fx-background-radius: 12;" text=" " />
+      <Pane fx:id="searchPane" layoutX="1098.0" layoutY="39.0" prefHeight="46.0" prefWidth="272.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
             <Button blendMode="OVERLAY" layoutX="5.0" layoutY="6.0" onAction="#handleBookSearch" prefHeight="38.0" prefWidth="38.0" style="-fx-background-radius: 12;" text=" " />
             <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="13.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
@@ -69,7 +68,7 @@
                   <Image url="@../assets/searchIcon.png" />
                </image>
             </ImageView>
-            <TextField fx:id="bookSearchField" layoutX="47.0" layoutY="1.0" prefHeight="44.0" prefWidth="251.0" promptText="Search by ISBN | Title | Author" style="-fx-background-color: white; -fx-background-radius: 0 12 12 0;">
+            <TextField fx:id="bookSearchField" layoutX="47.0" layoutY="1.0" prefHeight="44.0" prefWidth="222.0" promptText="Search by ISBN | Title | Author" style="-fx-background-color: white; -fx-background-radius: 0 12 12 0;">
                <font>
                   <Font size="16.0" />
                </font>
