@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MemberNaviController">
+<AnchorPane style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/17.0.14" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MemberNaviController">
    <children>
       <Pane prefHeight="981.0" prefWidth="93.0" style="-fx-background-color: black;">
          <children>

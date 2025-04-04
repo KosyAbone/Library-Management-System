@@ -1,10 +1,5 @@
 package Model;
 
-/**
- *
- * @author kossy
- */
-
 import java.sql.Timestamp;
 
 public class Fine {

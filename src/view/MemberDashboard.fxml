@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="905.0" prefWidth="1655.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MemberDashboardController">
+<Pane prefHeight="905.0" prefWidth="1655.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/17.0.14" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MemberDashboardController">
    <children>
       <Pane fx:id="borrowedBookPane" layoutX="52.0" layoutY="52.0" prefHeight="204.0" prefWidth="908.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>

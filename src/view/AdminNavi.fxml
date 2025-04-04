@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="982.0" prefWidth="1443.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminNaviController">
+<AnchorPane prefHeight="982.0" prefWidth="1200.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminNaviController">
    <children>
       <Button layoutX="-29.0" layoutY="-3.0" text=" " />
       <Pane layoutY="-1.0" prefHeight="982.0" prefWidth="223.0" style="-fx-background-color: black;">
@@ -101,7 +101,7 @@
             <Button blendMode="OVERLAY" layoutY="850.0" minHeight="48.0" onAction="#btnLogOutOnAction" prefWidth="222.7" text=" " />
          </children>
       </Pane>
-      <Pane layoutX="223.0" prefHeight="75.0" prefWidth="1573.0" style="-fx-background-color: white;">
+      <Pane layoutX="223.0" prefHeight="75.0" prefWidth="1240.0" style="-fx-background-color: white;">
          <children>
             <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="20.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -118,29 +118,29 @@
                   <Font size="12.0" />
                </font>
             </Label>
-            <Line endX="100.0" endY="7.636669158935547" layoutX="1342.0" layoutY="61.0" startX="100.0" startY="-48.727176666259766" strokeWidth="2.0" />
-            <Label fx:id="lblTime" layoutX="1357.0" layoutY="19.0" text="12:29 PM">
+            <Line endX="100.0" endY="7.636669158935547" layoutX="1037.0" layoutY="56.0" startX="100.0" startY="-48.727176666259766" strokeWidth="2.0" />
+            <Label fx:id="lblTime" layoutX="1062.0" layoutY="19.0" text="12:29 PM">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lblDate" layoutX="1347.0" layoutY="43.0" text="Mar 02, 2024" />
-            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="1452.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+            <Label fx:id="lblDate" layoutX="1051.0" layoutY="43.0" text="Mar 02, 2024" />
+            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="1138.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/settingsIcon.png" />
                </image>
             </ImageView>
-            <Button blendMode="OVERLAY" layoutX="1452.0" layoutY="18.0" minHeight="40.0" onAction="#btnSettingsOnAction" prefWidth="40.0" style="-fx-background-radius: 12;" text=" " />
+            <Button blendMode="OVERLAY" layoutX="1137.0" layoutY="16.0" minHeight="40.0" onAction="#btnSettingsOnAction" prefWidth="40.0" style="-fx-background-radius: 12;" text=" " />
          </children>
       </Pane>
       <AnchorPane fx:id="pagingPane" layoutX="223.0" layoutY="77.0" prefHeight="905.0" prefWidth="1522.0" visible="true" />
-      <ImageView fx:id="imgTransparent" fitHeight="982.0" fitWidth="1795.0" pickOnBounds="true" preserveRatio="true" visible="false">
+<!--      <ImageView fx:id="imgTransparent" fitHeight="982.0" fitWidth="1795.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../assets/transparentImage.png" />
          </image>
-      </ImageView>
+      </ImageView>-->
       <Pane fx:id="popUpPane" layoutX="615.0" layoutY="218.0" prefHeight="491.0" prefWidth="627.0" style="-fx-background-radius: 10;" visible="false" />
       <Pane fx:id="popUpLargePane" layoutX="428.0" layoutY="112.0" prefHeight="729.0" prefWidth="1139.0" style="-fx-background-radius: 10;" visible="false" />
-      <Pane fx:id="settingsPane" layoutX="1454.0" layoutY="82.0" prefHeight="140.0" prefWidth="282.0" visible="false" />
+      <Pane fx:id="settingsPane" layoutX="1047.0" layoutY="82.0" prefHeight="140.0" prefWidth="282.0" visible="false" />
    </children>
 </AnchorPane>

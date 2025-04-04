@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="905.0" prefWidth="1655.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MemberBorrowController">
+<Pane prefHeight="905.0" prefWidth="1655.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/17.0.14" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MemberBorrowController">
    <children>
       <Pane layoutX="1534.0" layoutY="93.0" prefHeight="812.5" prefWidth="121.0" style="-fx-background-color: black; -fx-background-radius: 12 0 0 0;">
          <children>

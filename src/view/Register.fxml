@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="575.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterController">
+<AnchorPane prefHeight="575.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17.0.14" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterController">
     <children>
         <Button layoutX="-48.0" layoutY="2.0" text=" " />
         <Pane layoutX="-0.39999999999997726" prefHeight="575.0" prefWidth="469.0" style="-fx-background-color: black; -fx-background-radius: 0 40 40 0;">
