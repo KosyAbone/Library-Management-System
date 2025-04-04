@@ -85,7 +85,6 @@ public class MemberNaviController {
 
     @FXML
     private void btnLibrariansOnAction(ActionEvent event) {
-        // Optional - implement your MemberBranchController here
     }
 
     @FXML

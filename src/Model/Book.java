@@ -15,7 +15,6 @@ public class Book {
     private String description;
     private String status;
 
-    // Constructors
     public Book() {}
     
     public Book(int bookId, String isbn, String title, String author, String genre, 
@@ -32,7 +31,6 @@ public class Book {
         this.description = description;
     }
 
-    // Getters and Setters
     public int getBookId() { 
         return bookId; 
     }

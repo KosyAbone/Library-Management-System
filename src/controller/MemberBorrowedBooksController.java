@@ -129,7 +129,7 @@ public class MemberBorrowedBooksController {
                 if (record == null || empty) {
                     setStyle("");
                 } else if (record.getDueDate().before(new Date(System.currentTimeMillis()))) {
-                    setStyle("-fx-background-color: #ffd6d6;"); // light red for overdue
+                    setStyle("-fx-background-color: #ffd6d6;");
                 } else {
                     setStyle("");
                 }

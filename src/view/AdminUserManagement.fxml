@@ -15,10 +15,10 @@
 
 <AnchorPane style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminUserManagementController">
    <children>
-      <Pane layoutX="7.0" layoutY="123.0" prefHeight="770.0" prefWidth="1300.0" style="-fx-background-color: white; -fx-background-radius: 12px;">
+      <Pane layoutX="7.0" layoutY="123.0" prefHeight="770.0" prefWidth="1230.0" style="-fx-background-color: white; -fx-background-radius: 12px;">
          <children>
             <Line endX="988.0" layoutX="121.0" layoutY="30.0" startX="-100.0" />
-            <TableView fx:id="userTableView" layoutX="6.0" layoutY="3.0" prefHeight="738.0" prefWidth="1209.0">
+            <TableView fx:id="userTableView" layoutX="10.0" layoutY="10.0" prefHeight="738.0" prefWidth="1209.0">
                 <columns>
                     <TableColumn fx:id="colID" prefWidth="113.5" text="ID" />
                     <TableColumn fx:id="colName" prefWidth="318.0" text="Name" />

@@ -43,9 +43,9 @@ public class ReturnBookPopupController {
     
     @FXML
     public void initialize() {
-        colIsbn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getBookTitle()));  // or .getIsbn() if added
+        colIsbn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getBookTitle()));
         colTitle.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getBookTitle()));
-        colAuthor.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getUserName())); // Change to author if needed
+        colAuthor.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getUserName()));
     }
 
     @FXML

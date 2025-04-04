@@ -24,7 +24,7 @@ public class DateTime {
     }
 
     public static String timeNow() {
-        SimpleDateFormat dateFormat=new SimpleDateFormat("HH:mm:ss"); //In 24hr Format
+        SimpleDateFormat dateFormat=new SimpleDateFormat("HH:mm:ss");
         return dateFormat.format(new Date()) ;
     }
 

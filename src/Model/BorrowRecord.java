@@ -14,10 +14,9 @@ public class BorrowRecord {
     private Date dueDate;
     private Date returnDate;
     private String status;
-    private String bookTitle; // For display purposes
-    private String userName;  // For display purposes
+    private String bookTitle;
+    private String userName;
 
-    // Constructors
     public BorrowRecord() {}
     
     public BorrowRecord(int borrowId, int bookId, int userId, Date borrowDate, 
@@ -31,7 +30,6 @@ public class BorrowRecord {
         this.status = status;
     }
 
-    // Getters and Setters
     public int getBorrowId() { 
         return borrowId; 
     }

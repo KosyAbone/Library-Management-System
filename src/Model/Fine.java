@@ -14,7 +14,6 @@ public class Fine {
     private String userName;  
     private String bookTitle; 
 
-    // Constructors
     public Fine() {}
     
     public Fine(int fineId, int borrowId, int userId, double amount, 
@@ -28,7 +27,6 @@ public class Fine {
         this.paidDate = paidDate;
     }
 
-    // Getters and Setters
     public int getFineId() { 
         return fineId; 
     }

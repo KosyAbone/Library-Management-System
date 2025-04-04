@@ -1,9 +1,5 @@
 package util;
 
-/**
- *
- * @author kossy
- */
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -19,7 +15,6 @@ public class DatabaseConnection {
     public static Connection getConnection() {
         if (conn == null) {
             try {
-                // Load the configuration from the properties file
                 Properties properties = new Properties();
                 try (InputStream input = DatabaseConnection.class.getClassLoader().getResourceAsStream("config.properties")) {
                     if (input == null) {
@@ -30,7 +25,7 @@ public class DatabaseConnection {
                 } catch (IOException ex) {
                     Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                // Get database credentials from the properties file
+                
                 String url = properties.getProperty("db.url");
                 String username = properties.getProperty("db.username");
                 String password = properties.getProperty("db.password");

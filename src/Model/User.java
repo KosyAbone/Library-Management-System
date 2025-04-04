@@ -10,10 +10,10 @@ public class User {
     private String lastName;
     private String email;
     private String phone;
-    private String userType;    // ADMIN, LIBRARIAN, MEMBER
-    private String memberType;  // STUDENT, FACULTY (only for MEMBER type)
+    private String userType;    
+    private String memberType;
 
-    // Constructors
+    
     public User() {}
     
     public User(int userId, String username, String password, String firstName, String lastName, 
@@ -28,8 +28,7 @@ public class User {
         this.userType = userType;
         this.memberType = memberType;
     }
-
-    // Getters and Setters
+    
     public int getUserId() { 
         return userId; 
     }

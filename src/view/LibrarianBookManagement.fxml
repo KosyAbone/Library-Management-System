@@ -8,7 +8,6 @@
 
 <Pane prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LibrarianBookManagementController">
    <children>
-      <!-- Header Section -->
       <Pane fx:id="homePane" layoutX="728.0" layoutY="25.0" prefHeight="44.0" prefWidth="44.0" style="-fx-background-color: white; -fx-background-radius: 10;">
          <children>
             <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
@@ -26,12 +25,10 @@
          </font>
       </Label>
       
-      <!-- Main Content Area -->
       <Pane layoutX="21.0" layoutY="93.0" prefHeight="799.0" prefWidth="1492.0" style="-fx-background-color: white; -fx-background-radius: 12px;">
          <children>
             <Line endX="1349.0" layoutX="121.0" layoutY="80.0" startX="-100.0" stroke="#E0E0E0" />
             
-            <!-- Action Buttons -->
             <HBox layoutX="18.0" layoutY="20.0" spacing="10">
                <children>
                   <Button fx:id="btnIssueBook" mnemonicParsing="false" onAction="#handleIssueBook" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Issue Book" />
@@ -39,7 +36,6 @@
                </children>
             </HBox>
             
-            <!-- Books Table with Quantity Tracking -->
             <TableView fx:id="booksTable" layoutX="18.0" layoutY="90.0" prefHeight="685.0" prefWidth="1451.0">
                <columns>
                   <TableColumn fx:id="colIsbn" prefWidth="120.0" text="ISBN" />
@@ -53,7 +49,6 @@
          </children>
       </Pane>
       
-      <!-- Search Section-->
       <Pane fx:id="searchPane" layoutX="1215.0" layoutY="24.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
             <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="13.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
@@ -71,7 +66,6 @@
          </children>
       </Pane>
       
-      <!-- Logout Button -->
       <Pane fx:id="logoutPane" layoutX="1500.0" layoutY="800.0" prefHeight="44.0" prefWidth="44.0" style="-fx-background-color: white; -fx-background-radius: 10;">
          <children>
             <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">

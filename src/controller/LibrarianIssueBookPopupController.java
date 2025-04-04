@@ -30,7 +30,6 @@ public class LibrarianIssueBookPopupController {
 
     @FXML
     public void initialize() {
-        // Set up custom cell factories for the ComboBoxes
         cbBooks.setCellFactory(new Callback<ListView<Book>, ListCell<Book>>() {
             @Override
             public ListCell<Book> call(ListView<Book> param) {

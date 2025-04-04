@@ -33,12 +33,10 @@ public class LibrarianDashboardController implements UserAwareController {
     }
     
     private void loadDashboardData() {
-        // Load data from database
         int totalBooks = bookDAO.getBookCount();
         int totalMembers = userDAO.getMemberCount();
         int overdueBooks = borrowRecordDAO.getOverdueBooksCount();
         
-        // Update UI
         lblTotalBookCount.setText(String.format("%,d", totalBooks));
         lblTotalMemberCount.setText(String.format("%,d", totalMembers));
         lblTotalOverdueBookCount.setText(String.format("%,d", overdueBooks));
@@ -87,8 +85,5 @@ public class LibrarianDashboardController implements UserAwareController {
     private void showError(String message, Exception e) {
         System.err.println(message + ": " + e.getMessage());
         e.printStackTrace();
-        // Consider adding an alert dialog here:
-        // Alert alert = new Alert(Alert.AlertType.ERROR, message);
-        // alert.showAndWait();
     }
 }

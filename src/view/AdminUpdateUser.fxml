@@ -40,8 +40,7 @@
       <Button blendMode="OVERLAY" layoutX="519.0" layoutY="54.0" onAction="#btnCloseOnAction" prefHeight="48.0" prefWidth="48.0" style="-fx-background-radius: 10;" text=" " />
 
       <Line endX="429.0" layoutX="149.0" layoutY="128.0" startX="-100.0" />
-
-      <!-- Input Fields -->
+      
       <TextField fx:id="txtFirstName" layoutX="93.0" layoutY="150.0" prefHeight="42.0" prefWidth="205.0" promptText="First Name" style="-fx-background-radius: 12px;">
          <font><Font size="14.0" /></font>
       </TextField>
@@ -67,8 +66,7 @@
       <ComboBox fx:id="comboUserType" layoutX="93.0" layoutY="450.0" prefHeight="42.0" prefWidth="205.0" promptText="User Type" style="-fx-background-radius: 12px;" />
       <ComboBox fx:id="comboMemberType" layoutX="329.0" layoutY="450.0" prefHeight="42.0" prefWidth="205.0" promptText="Member Type" style="-fx-background-radius: 12px;" />
       <Label fx:id="lblMemberTypeAlert" layoutX="336.0" layoutY="495.0" textFill="RED" />
-
-      <!-- Buttons -->
+      
       <Pane fx:id="cancelPane" layoutX="48.0" layoutY="510.0" prefHeight="40.0" prefWidth="259.0" style="-fx-background-color: #D7D7D7; -fx-background-radius: 10;">
          <children>
             <Label fx:id="lblCancel" layoutX="100.0" layoutY="10.0" text="CANCEL" />

@@ -35,7 +35,6 @@
       <Button blendMode="OVERLAY" layoutX="24.0" layoutY="28.0" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 12 0 0 12;" text=" " />
       <Button blendMode="OVERLAY" layoutX="289.0" layoutY="28.0" onAction="#btnReturnedBooksOnAction" prefHeight="38.0" prefWidth="244.0" style="-fx-background-radius: 0 12 12 0;" text=" " />
 
-      <!-- Table Section -->
       <Pane layoutX="21.0" layoutY="126.0" prefHeight="766.0" prefWidth="1259.0" style="-fx-background-color: white; -fx-background-radius: 12px;">
          <children>
             <Line endX="1121.419189453125" layoutX="121.0" layoutY="71.0" startX="-100.0" />
@@ -51,7 +50,6 @@
          </children>
       </Pane>
 
-      <!-- Search bar -->
       <Pane fx:id="searchPane" layoutX="965.0" layoutY="52.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;">
          <children>
             <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="16.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
@@ -67,7 +65,6 @@
          </children>
       </Pane>
 
-      <!-- Sidebar -->
       <Pane layoutX="1283.0" layoutY="124.0" prefHeight="771.0" prefWidth="103.0" style="-fx-background-color: black; -fx-background-radius: 12 0 0 0;">
          <children>
             <Text fill="WHITE" layoutX="-132.0" layoutY="412.0" rotate="-90.0" text="LIBRARY MANAGEMENT SYSTEM" wrappingWidth="384.0">
@@ -78,7 +75,6 @@
          </children>
       </Pane>
 
-      <!-- Alert -->
       <Label fx:id="lblSearchAlert" layoutX="1356.0" layoutY="71.0" textFill="RED">
          <font>
             <Font size="11.0" />

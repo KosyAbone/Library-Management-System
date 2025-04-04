@@ -18,7 +18,7 @@ public class BookDAO {
                     "available_quantity, publication_year, publisher, description, status) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            book.calculateStatus(); // Ensure status is calculated before saving
+            book.calculateStatus();
             setBookParameters(ps, book);
             ps.setString(10, book.getStatus());
             return ps.executeUpdate() > 0;
@@ -34,7 +34,7 @@ public class BookDAO {
                     "available_quantity=?, publication_year=?, publisher=?, description=?, status=? " +
                     "WHERE book_id=?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            book.calculateStatus(); // To Ensure status is calculated before updating
+            book.calculateStatus();
             setBookParameters(ps, book);
             ps.setString(10, book.getStatus());
             ps.setInt(11, book.getBookId());
@@ -121,7 +121,6 @@ public class BookDAO {
 
     // ========== INVENTORY MANAGEMENT ==========
     public boolean updateAvailableQuantity(int bookId, int change) {
-        // First get current quantity
         Book book = getBookById(bookId);
         if (book == null) return false;
         if(book.getAvailableQuantity() <= 0) return false;
@@ -196,12 +195,10 @@ public class BookDAO {
     }
     
     public List<Book> getCheckedOutBooks() {
-        // Get books where at least one copy is checked out (available_quantity < total quantity)
         return getBooks("SELECT * FROM books WHERE available_quantity < quantity ORDER BY title");
     }
     
     public int getCheckedOutBookCount() {
-        // Sum of all checked out copies across all books
         String sql = "SELECT SUM(quantity - available_quantity) FROM books";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             try (ResultSet rs = ps.executeQuery()) {

@@ -10,15 +10,13 @@ import javafx.stage.Stage;
 
 public final class SceneManager {
     private static Stage stage;
-
-    // Initialize the stage once
+    
     public static void init(Stage primaryStage) {
         if (stage == null) {
             stage = primaryStage;
         }
     }
-
-    // Core scene switching method
+    
     public static void switchToScene(Parent root) {
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -26,9 +24,7 @@ public final class SceneManager {
         stage.sizeToScene();
         stage.centerOnScreen();
 }
-
-
-    // Load FXML + switch scene + return controller
+    
     public static <T> T loadAndSwitch(String fxmlPath) throws IOException {
         FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource(fxmlPath));
         Parent root = loader.load();
@@ -38,20 +34,15 @@ public final class SceneManager {
     
     public static <T> T loadModal(String fxmlPath, String title, Modality modality, Consumer<T> configureController) throws IOException {
         
-        // Load the FXML
         FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource(fxmlPath));
         Parent root = loader.load();
         
-        // Get controller before showing the stage
         T controller = loader.getController();
         
-        // Configure the controller before showing the stage
         if (configureController != null) {
             configureController.accept(controller);
         }
 
-        // Set up the scene
-        // Create new stage for the modal
         Stage modalStage = new Stage();
         modalStage.initModality(modality);
         modalStage.setTitle(title);

@@ -335,12 +335,11 @@ public class BorrowRecordDAO {
         record.setReturnDate(rs.getDate("return_date"));
         record.setStatus(rs.getString("status"));
         
-        // These fields might not be present in all queries
         try {
             record.setBookTitle(rs.getString("title"));
             record.setUserName(rs.getString("username"));
         } catch (SQLException e) {
-            // Ignore if these columns don't exist in the result set
+            
         }
         
         return record;

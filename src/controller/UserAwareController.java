@@ -1,9 +1,5 @@
 package controller;
 
-/**
- *
- * @author kossy
- */
 import Model.User;
 
 public interface UserAwareController {

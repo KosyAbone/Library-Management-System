@@ -19,7 +19,6 @@ public class UserDAO {
         String sql = "INSERT INTO users (username, password, first_name, last_name, email, phone, " +
                      "user_type, member_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            // Hash password before storing
             String hashedPassword = PasswordUtils.hashPassword(user.getPassword());
             user.setPassword(hashedPassword);
 
@@ -30,9 +29,7 @@ public class UserDAO {
             return false;
         }
     }
-
-
-    // In UserDAO.java - modify to make both methods return boolean
+    
     public boolean updateUser(User user) {
         if (user == null || user.getPassword() == null) {
             return false;
@@ -59,8 +56,7 @@ public class UserDAO {
     
     public User updatePassword(int userId, String newPassword) {
         if (newPassword == null) return null;
-
-        // Always hash the password before storing
+        
         String hashedPassword = PasswordUtils.hashPassword(newPassword);
 
         String sql = "UPDATE users SET password = ? WHERE user_id = ?";
@@ -73,7 +69,7 @@ public class UserDAO {
                 
                 return getUserById(userId);
             } else {
-                return null;  // Return null if the update failed
+                return null;
             }
         } catch (SQLException e) {
             handleSQLException(e);
@@ -164,30 +160,25 @@ public class UserDAO {
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    // Retrieve stored password (it could be either plain text or hashed)
                     String storedPassword = rs.getString("password");
-
-                    // Check if the stored password is hashed or plain text
+                    
                     if (PasswordUtils.isHashedPassword(storedPassword)) {
-                        // If the password is hashed, verify using PasswordUtils
                         if (PasswordUtils.verifyPassword(password, storedPassword)) {
-                            return extractUserFromResultSet(rs);  // Return user if password matches
+                            return extractUserFromResultSet(rs);
                         } else {
-                            return null;  // Password does not match
+                            return null;
                         }
                     } else {
-                        // If the stored password is plain text, verify and upgrade
                         if (password.equals(storedPassword)) {
-                            // Upgrade the plain text password to a hashed one and update the DB
                             String hashedPassword = PasswordUtils.hashPassword(password);
                             updatePasswordInDatabase(rs.getInt("user_id"), hashedPassword);
-                            return extractUserFromResultSet(rs);  // Return user after updating password
+                            return extractUserFromResultSet(rs);
                         } else {
-                            return null;  // Password does not match
+                            return null;
                         }
                     }
                 } else {
-                    return null;  // Username not found
+                    return null;
                 }
             }
         } catch (SQLException ex) {
@@ -204,7 +195,7 @@ public class UserDAO {
             ps.setInt(2, userId);
             ps.executeUpdate();
         } catch (SQLException ex) {
-            ex.printStackTrace();  // Log exception or handle it appropriately
+            ex.printStackTrace();
         }
     }
 
@@ -273,13 +264,10 @@ public class UserDAO {
     public boolean canCreateUserType(String currentUserType, String newUserType) {
         switch (currentUserType) {
             case "ADMIN":
-                // Admin can create any type of account
                 return true;
             case "LIBRARIAN":
-                // Librarians can only create MEMBER accounts
                 return "MEMBER".equals(newUserType);
             default:
-                // Other users (including MEMBER) can't create accounts
                 return false;
         }
     }

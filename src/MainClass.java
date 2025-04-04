@@ -6,12 +6,10 @@ import javafx.stage.Stage;
 public class MainClass extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Initialize SceneManager with global dimensions
         SceneManager.init(primaryStage);
         
         SceneManager.loadAndSwitch("/view/Login.fxml");
         
-        // Window configuration
         primaryStage.setTitle("Library Management System");
         primaryStage.setResizable(true);
         primaryStage.show();

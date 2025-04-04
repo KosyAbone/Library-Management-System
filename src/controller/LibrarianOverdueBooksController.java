@@ -56,8 +56,7 @@ public class LibrarianOverdueBooksController {
 
         colDueDate.setCellValueFactory(cellData -> 
             new SimpleObjectProperty<>(cellData.getValue().getDueDate()));
-
-        // Days Overdue column
+        
         colDaysOverdue.setCellFactory(column -> new TableCell<>() {
             @Override
             protected void updateItem(Integer item, boolean empty) {
@@ -75,7 +74,6 @@ public class LibrarianOverdueBooksController {
             }
         });
         
-        // Fine Amount column
         colFineAmount.setCellFactory(column -> new TableCell<>() {
             @Override
             protected void updateItem(Double item, boolean empty) {
@@ -90,7 +88,6 @@ public class LibrarianOverdueBooksController {
             }
         });
         
-        // Fine Status column
         colFineStatus.setCellFactory(column -> new TableCell<>() {
             @Override
             protected void updateItem(String item, boolean empty) {
@@ -121,8 +118,7 @@ public class LibrarianOverdueBooksController {
                 showAlert("Information", "No overdue books found");
                 return;
             }
-
-            // Preload fine information
+            
             fineStatusMap.clear();
             fineAmountMap.clear();
 
@@ -165,7 +161,7 @@ public class LibrarianOverdueBooksController {
         Fine fine;
         
         if (existingFines.isEmpty()) {
-            // Create new fine
+            
             fine = new Fine();
             fine.setBorrowId(selectedRecord.getBorrowId());
             fine.setUserId(selectedRecord.getUserId());
@@ -184,7 +180,7 @@ public class LibrarianOverdueBooksController {
                 return;
             }
         } else {
-            // Update existing fine
+            
             fine = existingFines.get(0);
             fine.setStatus("PAID");
             fine.setPaidDate(new Timestamp(System.currentTimeMillis()));
@@ -195,7 +191,6 @@ public class LibrarianOverdueBooksController {
             }
         }
         
-        // Update local maps
         fineStatusMap.put(selectedRecord.getBorrowId(), "PAID");
         fineAmountMap.put(selectedRecord.getBorrowId(), fine.getAmount());
         

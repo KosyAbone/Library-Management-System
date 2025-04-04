@@ -1,7 +1,4 @@
-/**
- *
- * @author kossy
- */
+
 package DAO;
 
 import java.sql.*;

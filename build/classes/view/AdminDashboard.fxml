@@ -13,7 +13,6 @@
 
 <AnchorPane prefHeight="905.0" prefWidth="1100.0" style="-fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx/17.0.14" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashboardController">
     <children>
-        <!-- Pie Chart Panel -->
         <Pane fx:id="pieChartPane" layoutX="10.0" layoutY="27.0" prefHeight="531.0" prefWidth="531.0">
             <children>
                 <PieChart fx:id="pieChart" labelsVisible="false" layoutX="18.0" layoutY="15.0" prefHeight="500.0" prefWidth="500.0" />
@@ -35,8 +34,7 @@
             </Label>
          </children>
       </Pane>
-
-        <!-- Total User Count -->
+      
         <Pane layoutX="570.0" layoutY="34.0" prefHeight="121.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;">
             <children>
                 <Pane layoutX="20.0" layoutY="17.0" prefHeight="88.0" prefWidth="80.0" style="-fx-background-color: #D7D7D7; -fx-background-radius: 12;">
@@ -54,8 +52,7 @@
                 </Label>
             </children>
         </Pane>
-
-        <!-- Total Book Count -->
+        
         <Pane layoutX="570.0" layoutY="182.0" prefHeight="121.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;">
             <children>
                 <Pane layoutX="20.0" layoutY="17.0" prefHeight="88.0" prefWidth="80.0" style="-fx-background-color: #D7D7D7; -fx-background-radius: 12;">
@@ -73,8 +70,7 @@
                 </Label>
             </children>
         </Pane>
-
-        <!-- Librarian Count -->
+        
         <Pane layoutX="570.0" layoutY="330.0" prefHeight="121.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;">
             <children>
                 <Pane layoutX="20.0" layoutY="17.0" prefHeight="88.0" prefWidth="80.0" style="-fx-background-color: #D7D7D7; -fx-background-radius: 12;">
@@ -92,8 +88,7 @@
                 </Label>
             </children>
         </Pane>
-
-        <!-- Overdue Borrowers (TableView) -->
+        
         <Pane layoutX="900.0" layoutY="34.0" prefHeight="419.0" prefWidth="344.0" style="-fx-background-color: white; -fx-background-radius: 12;">
             <children>
                 <Label layoutX="85.0" layoutY="24.0" text="Overdue Borrowers">
@@ -108,7 +103,6 @@
             </children>
         </Pane>
         
-        <!-- Librarians TableView Section -->
         <Pane layoutX="900.0" layoutY="487.0" prefHeight="363.0" prefWidth="339.0" style="-fx-background-color: white; -fx-background-radius: 12;">
             <children>
                 <Label layoutX="129.0" layoutY="19.0" text="Librarians">
