@@ -6,7 +6,9 @@
 
 ## Test Login details
 *Admin(username: admin, password: admin123)*  
+
 *Librarian(username: lib1, password: lib123)*
+
 *Member(username: stu1, password: student1) but you can create member type from the UI and use*
 
 
