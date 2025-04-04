@@ -177,3 +177,24 @@ Project runs: No errors
 - NetBeans 17 with JavaFX  
 - MySQL Database  
 - Library System Running!  
+
+## REFERENCES
+- **MySQL Workbench Setup Tutorial**:  
+  [https://www.youtube.com/watch?v=nng8hDbUpnc](https://www.youtube.com/watch?v=nng8hDbUpnc)  
+  *(Video guide for setting up MySQL Workbench)*
+
+- **JavaFX 17 SDK Download**:  
+  [https://gluonhq.com/products/javafx/](https://gluonhq.com/products/javafx/)  
+  *(Download the JavaFX SDK based on your system architecture)*
+
+- **MySQL Community Server Download**:  
+  [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/)  
+  *(Select the appropriate MySQL version for your operating system)*
+
+- **GitHub Repository**:  
+  [https://github.com/KosyAbone/Library-Management-System](https://github.com/KosyAbone/Library-Management-System)  
+  *(Source code and project files)*
+
+- **JavaFX on NetBeans Setup Guide**:  
+  [https://www.youtube.com/watch?v=6E4IkTuvUCI](https://www.youtube.com/watch?v=6E4IkTuvUCI)  
+  *(Video tutorial for configuring JavaFX with NetBeans)*
