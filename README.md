@@ -4,6 +4,11 @@
 *(Step-by-Step Instructions)*  
 **For:** NetBeans IDE 17 or 25, JavaFX 17 or 23, JDK 21, MySQL Connector/J 9.0+
 
+## Test Login details
+*Admin(username: admin, password: admin123)*  
+*Librarian(username: lib1, password: lib123)*
+
+
 ## Table of Contents
 What You Need to Install  
 Installing Java (JDK 21)  
