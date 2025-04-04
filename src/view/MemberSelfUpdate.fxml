@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="560.0" prefWidth="627.0" style="-fx-background-color: white; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MemberSelfUpdateController">
+<Pane prefHeight="560.0" prefWidth="627.0" style="-fx-background-color: white; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/17.0.14" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MemberSelfUpdateController">
    <children>
 
       <Pane layoutX="48.0" layoutY="48.0" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #D7D7D7; -fx-background-radius: 10;">

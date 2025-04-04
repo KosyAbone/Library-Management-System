@@ -1,7 +1,3 @@
-/**
- *
- * @author kossy
- */
 package Model;
 
 import java.sql.Date;

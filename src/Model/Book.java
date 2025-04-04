@@ -2,11 +2,6 @@ package Model;
 
 import DAO.BookDAO;
 
-/**
- *
- * @author kossy
- */
-
 public class Book {
     private int bookId;
     private String isbn;
