@@ -62,6 +62,7 @@ public class AdminUserManagementController {
         loadUsers();
         txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
             txtSearchOnAction();
+            setupActionColumn();
         });
     }
 
@@ -116,7 +117,6 @@ public class AdminUserManagementController {
         String keyword = txtSearch.getText().trim().toLowerCase();
 
         if (keyword.isEmpty()) {
-            lblSearchAlert.setText("Search field cannot be empty.");
             userTableView.setItems(allUsers);
             return;
         }

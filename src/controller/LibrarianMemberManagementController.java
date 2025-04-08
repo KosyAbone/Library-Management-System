@@ -55,6 +55,7 @@ public class LibrarianMemberManagementController{
         loadUsers();
         txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
             handleSearch();
+            setupActionColumn();
         });
     }
 
@@ -106,10 +107,10 @@ public class LibrarianMemberManagementController{
 
     @FXML
     private void handleSearch() {
+        System.out.print("search started");
         String keyword = txtSearch.getText().trim().toLowerCase();
 
         if (keyword.isEmpty()) {
-            lblSearchAlert.setText("Search field cannot be empty.");
             userTableView.setItems(allUsers);
             return;
         }

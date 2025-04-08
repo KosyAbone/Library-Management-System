@@ -4,9 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/MemberNaviController.java</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/MemberBorrow.fxml</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/AdminBookManagementController.java</file>
             <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/LibrarianBookManagementController.java</file>
             <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/AdminNavi.fxml</file>
             <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/AdminUserManagementController.java</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/MemberBorrowController.java</file>
             <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/AdminNaviController.java</file>
             <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/MemberNavi.fxml</file>
         </group>

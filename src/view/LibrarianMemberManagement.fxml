@@ -80,5 +80,10 @@
          </children>
       </Pane>
       <Button blendMode="OVERLAY" layoutX="1500.0" layoutY="800.0" onAction="#btnLogOutAction" prefHeight="44.0" prefWidth="44.0" style="-fx-background-radius: 10;" text=" " />
+      <Label fx:id="lblSearchAlert" layoutX="1216.0" layoutY="92.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
