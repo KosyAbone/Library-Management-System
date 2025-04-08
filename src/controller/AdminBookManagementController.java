@@ -74,7 +74,7 @@ public class AdminBookManagementController {
         colAuthor.setCellValueFactory(new PropertyValueFactory<>("author"));
         colGenre.setCellValueFactory(new PropertyValueFactory<>("genre"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-        colActions.setCellValueFactory(new PropertyValueFactory<>("actions"));
+        colActions.setCellValueFactory(new PropertyValueFactory<>(""));
         
     }
     
