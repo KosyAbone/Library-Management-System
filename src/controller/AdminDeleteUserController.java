@@ -41,7 +41,7 @@ public class AdminDeleteUserController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                alert.setTitle("Delete Successful");
                 alert.setHeaderText(null);
-                alert.setContentText("Book Deleted!");
+                alert.setContentText("User Deleted!");
                 alert.showAndWait();
             closePopup();
         } else {
