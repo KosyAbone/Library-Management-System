@@ -53,6 +53,9 @@ public class MemberReturnedBooksController {
         ));
         colBorrowDate.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getBorrowDate().toString()));
         colStatus.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getStatus()));
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            txtSearchOnAction();
+        });
     }
 
     private void loadReturnedBooks() {

@@ -3,28 +3,48 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/AdminBookManagementController.java</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/Register.fxml</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/AdminOverdue.fxml</file>
             <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/LibrarianBookManagementController.java</file>
-            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/util/DatabaseConnection.java</file>
-            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/ReturnBookPopupController.java</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/AdminViewBook.fxml</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/AdminUserManagement.fxml</file>
             <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/LibrarianIssueBookPopupController.java</file>
             <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/AdminUserManagementController.java</file>
-            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/DAO/UserDAO.java</file>
             <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/Model/Book.java</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/AdminUpdateBook.fxml</file>
             <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/BorrowBookPopupController.java</file>
-            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/LibrarianDashboard.fxml</file>
-            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/LibrarianDashboardController.java</file>
-            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/UserAwareController.java</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/LibrarianMemberManagement.fxml</file>
             <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/LibrarianIssueBookPopUp.fxml</file>
-            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/AdminAddUserController.java</file>
-            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/config.properties</file>
-            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/AdminUpdateBookController.java</file>
-            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/DAO/BookDAO.java</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/Model/Fine.java</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/MemberBorrow.fxml</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/MemberDashboard.fxml</file>
             <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/AdminAddBookController.java</file>
             <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/LibrarianBookManagement.fxml</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/LibrarianOverdueBooks.fxml</file>
             <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/AdminUpdateUserController.java</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/MemberSelfUpdate.fxml</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/Model/User.java</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/AdminDeleteUser.fxml</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/AdminAddBook.fxml</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/AdminBorrowed.fxml</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/AdminBookManagementController.java</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/util/DatabaseConnection.java</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/ReturnBookPopupController.java</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/UserAwareController.java</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/Model/BorrowRecord.java</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/MemberBorrowedBooks.fxml</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/MemberNavi.fxml</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/AdminAddUserController.java</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/config.properties</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/AdminAddUser.fxml</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/AdminDeleteBook.fxml</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/controller/AdminUpdateBookController.java</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/AdminNavi.fxml</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/LibrarianReturnBookPopUp.fxml</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/ReturnBookPopup.fxml</file>
             <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/AdminDashboard.fxml</file>
-            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/DAO/BorrowRecordDAO.java</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/AdminUpdateUser.fxml</file>
+            <file>file:/Users/kossy/Desktop/JavaFX_Projects/Library-Management-System/src/view/AdminViewUser.fxml</file>
         </group>
     </open-files>
 </project-private>

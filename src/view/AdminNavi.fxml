@@ -80,7 +80,7 @@
                      </image>
                   </ImageView>
                </children></Pane>
-            <Pane fx:id="logOutPane" layoutY="850.0" prefHeight="48.0" prefWidth="222.7" style="-fx-background-color: black;">
+            <Pane fx:id="logOutPane" layoutY="728.0" prefHeight="48.0" prefWidth="222.7" style="-fx-background-color: black;">
                <children>
                   <Label fx:id="lblLogOut" layoutX="85.0" layoutY="15.0" text="Log Out" textFill="WHITE">
                      <font>
@@ -93,12 +93,12 @@
                      </image>
                   </ImageView>
                </children></Pane>
-            <Button blendMode="OVERLAY" layoutY="158.0" minHeight="48.0" onAction="#btnDashboardOnAction" prefWidth="222.7" text=" " />
-            <Button blendMode="OVERLAY" layoutY="226.0" minHeight="48.0" onAction="#btnCatalogOnAction" prefWidth="222.7" text=" " />
-            <Button blendMode="OVERLAY" layoutY="294.0" minHeight="48.0" onAction="#btnBooksOnAction" prefWidth="222.7" text=" " />
-            <Button blendMode="OVERLAY" layoutY="362.0" minHeight="48.0" onAction="#btnUsersOnAction" prefWidth="222.7" text=" " />
-            <Button blendMode="OVERLAY" layoutY="430.0" minHeight="48.0" onAction="#btnLibrariansOnAction" prefWidth="222.7" text=" " />
-            <Button blendMode="OVERLAY" layoutY="850.0" minHeight="48.0" onAction="#btnLogOutOnAction" prefWidth="222.7" text=" " />
+            <Button blendMode="OVERLAY" layoutY="167.0" minHeight="48.0" onAction="#btnDashboardOnAction" prefWidth="222.7" text=" " />
+            <Button blendMode="OVERLAY" layoutY="235.0" minHeight="48.0" onAction="#btnCatalogOnAction" prefWidth="222.7" text=" " />
+            <Button blendMode="OVERLAY" layoutY="303.0" minHeight="48.0" onAction="#btnBooksOnAction" prefWidth="222.7" text=" " />
+            <Button blendMode="OVERLAY" layoutY="371.0" minHeight="48.0" onAction="#btnUsersOnAction" prefWidth="222.7" text=" " />
+            <Button blendMode="OVERLAY" layoutY="439.0" minHeight="48.0" onAction="#btnLibrariansOnAction" prefWidth="222.7" text=" " />
+            <Button blendMode="OVERLAY" layoutY="743.0" minHeight="48.0" onAction="#btnLogOutOnAction" prefWidth="222.7" text=" " />
          </children>
       </Pane>
       <Pane layoutX="223.0" prefHeight="75.0" prefWidth="1240.0" style="-fx-background-color: white;">

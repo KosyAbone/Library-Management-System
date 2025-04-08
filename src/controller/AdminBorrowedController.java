@@ -48,6 +48,9 @@ public class AdminBorrowedController {
         colDueDate.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
 
         loadBorrowedBooks();
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            txtSearchOnAction();
+        });
     }
 
     private void loadBorrowedBooks() {

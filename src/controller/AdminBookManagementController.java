@@ -63,6 +63,9 @@ public class AdminBookManagementController {
         setupTableColumns();
         setupActionColumn();
         loadBooks();
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            txtSearchOnAction();
+        });
     }
 
     private void setupTableColumns() {

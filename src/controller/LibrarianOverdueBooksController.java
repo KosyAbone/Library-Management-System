@@ -107,6 +107,10 @@ public class LibrarianOverdueBooksController {
                 }
             }
         });
+        
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            handleSearch();
+        });
     }
 
     private void loadOverdueBooks() {
@@ -199,7 +203,7 @@ public class LibrarianOverdueBooksController {
     }
 
     @FXML
-    private void handleSearch(ActionEvent event) {
+    private void handleSearch() {
         String query = txtSearch.getText().trim().toLowerCase();
         if (query.isEmpty()) {
             loadOverdueBooks();

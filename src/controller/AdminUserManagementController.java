@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 public class AdminUserManagementController {
@@ -59,6 +60,9 @@ public class AdminUserManagementController {
         setupTableColumns();
         setupActionColumn();
         loadUsers();
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            txtSearchOnAction();
+        });
     }
 
     private void setupTableColumns() {
@@ -128,7 +132,7 @@ public class AdminUserManagementController {
     }
 
     @FXML
-    private void btnAddUserOnAction(ActionEvent event) {
+    private void btnAddUserOnAction(MouseEvent event) {
         try {
             Navigation.openPopup("AdminAddUser.fxml", (AdminAddUserController controller) -> {
                 controller.setUser(currentUser);

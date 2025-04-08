@@ -47,6 +47,9 @@ public class LibrarianBookManagementController implements UserAwareController {
     @FXML
     public void initialize() {
         setupTableColumns();
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            handleSearch();
+        });
     }
 
     private void setupTableColumns() {

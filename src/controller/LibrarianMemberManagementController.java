@@ -53,6 +53,9 @@ public class LibrarianMemberManagementController{
         setupTableColumns();
         setupActionColumn();
         loadUsers();
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            handleSearch();
+        });
     }
 
     private void setupTableColumns() {

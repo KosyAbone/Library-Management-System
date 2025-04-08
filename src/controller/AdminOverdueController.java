@@ -43,6 +43,9 @@ public class AdminOverdueController {
     public void initialize() {
         setupTableColumns();
         loadOverdueRecords();
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            txtSearchOnAction();
+        });
     }
 
     private void setupTableColumns() {

@@ -57,6 +57,9 @@ public class MemberBorrowedBooksController {
 
         addReturnButtonToTable();
         highlightOverdueRows();
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            txtSearchOnAction();
+        });
     }
 
     private void loadBorrowedBooks() {

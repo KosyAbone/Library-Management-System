@@ -3,23 +3,18 @@ package controller;
 import DAO.BookDAO;
 import Model.Book;
 import Model.User;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.*;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.util.Callback;
 import util.Navigation;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
-import javafx.event.ActionEvent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class MemberBorrowController {
 
@@ -57,7 +52,9 @@ public class MemberBorrowController {
         loadBooks();
         addBorrowButtonToTable();
         
-        System.out.println("User on Member borrow " + currentUser);
+        bookSearchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            handleBookSearch(); // Call search on every text change
+        });
     }
 
     private void loadBooks() {
@@ -82,7 +79,7 @@ public class MemberBorrowController {
                         book.getAuthor().toLowerCase().contains(search) ||
                         book.getIsbn().toLowerCase().contains(search))
                 .collect(Collectors.toList());
-
+        
         booksTable.getItems().setAll(filtered);
         lblSearchAlert.setText(filtered.isEmpty() ? "No books matching your search." : "");
     }
@@ -115,7 +112,6 @@ public class MemberBorrowController {
                 btn.setOnAction(event -> {
                     Book book = getTableView().getItems().get(getIndex());
                     
-                    System.out.println("Book " + book);
                     openBorrowPopup(book);
                 });
             }
